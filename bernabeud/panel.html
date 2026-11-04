@@ -13,8 +13,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bungee&family=Rubik+Spray+Paint&family=Special+Elite&display=swap">
 <link rel="stylesheet" href="common.css">
 <link rel="stylesheet" href="panel.css">
-</head>
-<body class="street">
+<style>.pbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;gap:10px;align-items:center;padding:6px max(14px,env(safe-area-inset-left,0px));padding-top:calc(6px + env(safe-area-inset-top,0px));background:#F6F3EA;color:#0b1230;font:700 11px/1.2 Archivo,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}.pbar a{color:#0b1230}.pbar span{opacity:.8}@media(max-width:560px){.pbar span{display:none}}body{padding-top:30px}.top{top:30px!important}.lg{padding-top:50px}@media(min-width:900px){.side{top:96px!important}}.cta-bar{display:none}@media(max-width:899px){.cta-bar{display:block}}</style></head>
+<body class="street"><div class="pbar"><a href="index.html">← Volver al inicio</a><span>Prototipo de prueba · nada se publica</span></div>
 <div class="rail" aria-hidden="true"></div>
 
 <!-- ACCESO -->
@@ -33,7 +33,7 @@
       <button type="button" class="chip" data-demo="dueno@bernabeud.demo|bernabeud">Dueño</button>
       <button type="button" class="chip" data-demo="junior@bernabeud.demo|junior123">Junior</button>
       <button type="button" class="chip" data-demo="nelly@bernabeud.demo|nelly123">Nelly</button></div>
-    <a class="back" href="index.html">← Volver a la página</a>
+    <a class="back" href="sitio.html">← Volver a la página</a>
     <div class="lg-on"><span>Desarrollado por</span><img src="img/onytek.png" alt="Onytek"><em>Tecnología con propósito, ejecución con precisión.</em></div>
   </form>
 </main>
@@ -43,7 +43,7 @@
   <header class="top">
     <img class="top-logo" src="img/monograma.png" alt="">
     <div class="top-t"><b id="whoName">Panel</b><small id="whoRole"></small></div>
-    <a class="ib" href="index.html" aria-label="Ver la página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg><span>Sitio</span></a>
+    <a class="ib" href="sitio.html" aria-label="Ver la página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg><span>Sitio</span></a>
     <button class="ib" type="button" id="logout" aria-label="Cerrar sesión"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Salir</span></button>
   </header>
 

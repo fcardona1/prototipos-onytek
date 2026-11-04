@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BERNABEUD Barbershop</title>
+<meta name="description" content="BERNABEUD Barbershop: cortes, barba, cejas y rayas. Elige tu servicio, tu barbero y reserva tu turno.">
+<meta name="theme-color" content="#07070A">
+<meta name="robots" content="noindex">
+<link rel="icon" href="img/favicon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/app-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bungee&family=Rubik+Spray+Paint&family=Special+Elite&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="site.css">
+<style>.pbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;gap:10px;align-items:center;padding:6px max(14px,env(safe-area-inset-left,0px));padding-top:calc(6px + env(safe-area-inset-top,0px));background:#F6F3EA;color:#0b1230;font:700 11px/1.2 Archivo,system-ui,sans-serif;letter-spacing:.12em;text-transform:uppercase}.pbar a{color:#0b1230}.pbar span{opacity:.8}@media(max-width:560px){.pbar span{display:none}}body{padding-top:30px}.top{top:30px!important}.lg{padding-top:50px}@media(min-width:900px){.side{top:96px!important}}.cta-bar{display:none}@media(max-width:899px){.cta-bar{display:block}}</style></head>
+<body class="street"><div class="pbar"><a href="index.html">← Volver al inicio</a><span>Prototipo de prueba · nada se publica</span></div>
+<div class="rail" aria-hidden="true"></div>
+
+<header class="top" id="top">
+  <div class="wrap bar">
+    <a class="brand" href="#inicio" aria-label="BERNABEUD Barbershop, inicio"><img src="img/logo-horizontal.png" alt="BERNABEUD Barbershop" width="1100" height="370"></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#servicios">La carta</a><a href="#barberos">Barberos</a><a href="#llegar">Cómo llegar</a><a href="#redes">Redes</a>
+    </nav>
+    <div class="actions">
+      <button class="btn ghost small inst" type="button" data-install hidden>Instalar</button>
+      <button class="btn small" type="button" data-book>Reservar turno</button>
+    </div>
+  </div>
+  <nav class="chips" id="bnav" aria-label="Ir a">
+    <a href="#inicio" data-s="inicio">Inicio</a><a href="#servicios" data-s="servicios">La carta</a><a href="#barberos" data-s="barberos">Barberos</a><a href="#reservar" data-s="reservar">Turno</a><a href="#llegar" data-s="llegar">Llegar</a><a href="#redes" data-s="redes">Redes</a>
+  </nav>
+</header>
+
+<main>
+  <!-- PORTADA -->
+  <section class="hero" id="inicio" aria-labelledby="h1">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow open-line"><span class="pill live" id="openPill"></span><span id="hoursPill"></span></p>
+        <h1 id="h1"><span class="neon-w">Tu corte,</span><span class="neon-g">tu corona.</span></h1>
+        <p class="marker tagline" id="tagline"></p>
+        <p class="lead">Escoge el servicio, escoge a tu barbero y marca la hora que te sirve. Sin llamadas y sin esperar en la puerta.</p>
+        <div class="cta">
+          <button class="btn" type="button" data-book>Reservar mi turno</button>
+          <a class="btn ghost" href="#servicios">Ver la carta</a>
+        </div>
+        <button class="clave" id="clave" type="button" aria-pressed="false" aria-label="Activar o apagar la clave de salsa"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="clave-t">Dale a la clave</span><small>Salsa · toca para sonar</small></button>
+      </div>
+      <div class="hero-art">
+        <span class="pitch" aria-hidden="true"></span>
+        <span class="hala marker" aria-hidden="true">¡Hala Madrid!</span>
+        <button class="mirror" id="sticker" type="button" aria-label="Logo BERNABEUD Barbershop: tócalo">
+          <span class="frame"></span>
+          <img class="sticker" src="img/logo-main.png" alt="Logo de BERNABEUD Barbershop: escudo con corona, BB, postes de barbero y navajas" width="900" height="1047" fetchpriority="high">
+          <span class="shine"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
+  <!-- LA CARTA -->
+  <section class="sec" id="servicios" aria-labelledby="hSv">
+    <div class="wrap">
+      <p class="num">01 / La carta</p>
+      <h2 class="sign" id="hSv">Servicios <span>y precios</span></h2>
+      <div class="menu">
+        <div class="menu-head"><span>Barbershop Bernabeud</span><span>Precios en pesos</span></div>
+        <div class="menu-rows" id="svGrid"></div>
+        <p class="menu-foot marker">Rayas y cejas adicionales incluidas en todos los cortes.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
+  <!-- BARBEROS -->
+  <section class="sec" id="barberos" aria-labelledby="hBr">
+    <div class="wrap">
+      <p class="num">02 / El equipo</p>
+      <h2 class="sign" id="hBr">Alineación <span>titular</span></h2>
+      <div class="br-grid" id="brGrid"></div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
+  <!-- TURNO -->
+  <section class="sec" id="reservar" aria-labelledby="hRes">
+    <div class="wrap">
+      <p class="num">03 / Tu turno</p>
+      <h2 class="sign" id="hRes">Tu hora, <span>sin filas</span></h2>
+      <div class="ticket">
+        <div class="stub">
+          <p class="stub-n">ENTRADA</p>
+          <p class="match"><span>Partido</span><b>Tu corte</b><span>Grada</span><b>Silla de barbero</b><span>Puertas</span><b>9:00 a. m.</b></p>
+          <ol class="steps">
+            <li><b>1</b><span>Elige el servicio</span></li>
+            <li><b>2</b><span>Escoge barbero</span></li>
+            <li><b>3</b><span>Marca día y hora libre</span></li>
+            <li><b>4</b><span>Confirma y listo</span></li>
+          </ol>
+          <button class="btn" type="button" data-book>Reservar ahora</button>
+        </div>
+        <div class="board" id="today" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
+  <!-- CÓMO LLEGAR -->
+  <section class="sec" id="llegar" aria-labelledby="hLl">
+    <div class="wrap">
+      <p class="num">04 / Ven a visitarnos</p>
+      <h2 class="sign" id="hLl">Cómo <span>llegar</span></h2>
+      <div class="loc-grid">
+        <div class="loc-card">
+          <p class="lbl">Dirección</p>
+          <p class="addr" id="addr"></p>
+          <p class="lbl">Horario</p>
+          <ul class="hrs" id="hrs"></ul>
+          <div class="loc-btns" id="locBtns"></div>
+        </div>
+        <div class="map" id="map" role="img" aria-label="Mapa ilustrado de la ubicación">
+          <svg viewBox="0 0 400 300" aria-hidden="true">
+            <rect width="400" height="300" fill="#0c0c12"/>
+            <g stroke="#232331" stroke-width="14" fill="none" stroke-linecap="round"><path d="M-10 90 L410 70"/><path d="M-10 200 L410 230"/><path d="M110 -10 L130 310"/><path d="M290 -10 L270 310"/></g>
+            <g stroke="#5B8CFF" stroke-opacity=".7" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round" fill="none"><path d="M30 250 C120 230 150 120 200 130 S300 150 330 70"/></g>
+            <g transform="translate(200 120)"><path d="M0 0 C-26 -34 -26 -62 0 -62 C26 -62 26 -34 0 0Z" fill="#FFC83D"/><circle cy="-42" r="9" fill="#07070A"/></g>
+            <circle cx="200" cy="124" r="34" fill="#FFC83D" fill-opacity=".14"/>
+          </svg>
+          <span class="map-tag marker">¡Aquí es!</span>
+        </div>
+      </div>
+      <ol class="how-to" id="howTo"></ol>
+    </div>
+  </section>
+
+  <!-- REDES -->
+  <section class="sec" id="redes" aria-labelledby="hRd">
+    <div class="wrap">
+      <p class="num">05 / Síguenos</p>
+      <h2 class="sign" id="hRd">En <span>redes</span></h2>
+      <div class="socials" id="socials"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="pole-line" aria-hidden="true"></div>
+  <div class="wrap foot-in">
+    <div class="foot-brand">
+      <img src="img/logo-horizontal.png" alt="BERNABEUD Barbershop" width="1100" height="370" loading="lazy">
+      <p class="neon-tag" id="footTag"></p>
+    </div>
+    <nav class="flinks" aria-label="Pie de página">
+      <a href="#servicios">La carta</a><a href="#barberos">Barberos</a><a href="#llegar">Cómo llegar</a><a href="panel.html">Acceso barberos</a>
+      <button type="button" class="linkbtn" data-install hidden>Instalar app</button>
+    </nav>
+    <nav class="legal" aria-label="Información legal">
+      <button type="button" data-legal="datos">Política de tratamiento y protección de datos personales</button>
+      <button type="button" data-legal="terminos">Términos de servicio</button>
+      <button type="button" data-legal="reembolso">Política de reembolso</button>
+      <button type="button" data-legal="reservas">Política de reservas</button>
+      <button type="button" data-legal="quienes" class="on">¿Quiénes somos?</button>
+      <p class="copy" id="copy">© BERNABEUD Barbershop · Todos los derechos reservados.</p>
+    </nav>
+    <div class="onytek">
+      <span class="by">Desarrollado por</span>
+      <a href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, abrir www.onytek.co"><img src="img/onytek.png" alt="Onytek" width="900" height="165" loading="lazy"></a>
+      <p class="lema">Tecnología con propósito, <span>ejecución con precisión.</span></p>
+    </div>
+  </div>
+</footer>
+
+<!-- barra inferior (móvil): un solo botón grande -->
+<div class="cta-bar" id="ctaBar">
+  <button type="button" class="cta-main" data-book aria-label="Reservar turno">
+    <span class="cta-l"><b>Reservar turno</b><small>Elige barbero y hora libre</small></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </button>
+</div>
+
+<a class="wafab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" hidden>
+  <span class="wa-dot"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
+</a>
+
+<!-- reserva: modal / hoja inferior -->
+<div class="layer" id="book" aria-hidden="true">
+  <div class="scrim"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="bTitle">
+    <div class="sh-head">
+      <h2 id="bTitle">Reservar turno</h2>
+      <button class="x" type="button" data-close aria-label="Cerrar">×</button>
+    </div>
+    <div class="sh-body" id="bBody"></div>
+    <div class="sh-foot" id="bFoot"></div>
+  </div>
+</div>
+<div class="layer" id="legal" aria-hidden="true">
+  <div class="scrim"></div>
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="lgT">
+    <div class="sh-head"><h2 id="lgT"></h2><button class="x" type="button" data-close aria-label="Cerrar">×</button></div>
+    <div class="sh-body legal-body" id="lgB"></div>
+    <div class="sh-foot"><button class="btn" type="button" data-close>Cerrar</button></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="core.js"></script>
+<script src="site.js"></script>
+<script>if ('serviceWorker' in navigator) addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });</script>
+</body>
+</html>

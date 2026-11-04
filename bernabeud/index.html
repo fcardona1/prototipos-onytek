@@ -1,216 +1,178 @@
-<!doctype html>
-<html lang="es">
-<head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>BERNABEUD Barbershop</title>
-<meta name="description" content="BERNABEUD Barbershop: cortes, barba, cejas y rayas. Elige tu servicio, tu barbero y reserva tu turno.">
-<meta name="theme-color" content="#07070A">
-<meta name="robots" content="noindex">
-<link rel="icon" href="img/favicon.png">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="img/app-192.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Prototipo Bernabeud</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bungee&family=Rubik+Spray+Paint&family=Special+Elite&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="common.css">
-<link rel="stylesheet" href="site.css">
-</head>
-<body class="street">
-<div class="rail" aria-hidden="true"></div>
+<style>
+/* Concepto: la pared de la barbería de noche. Negro, dorado y azul rey; cinta de peligro como divisor. */
+:root{--bg:#0A0A0C;--card:#17171B;--card2:#1F1F25;--line:#2C2C34;--fg:#F4F4F2;--soft:#C2C0C8;--gold:#C9A44C;--gold2:#E8D3A0;--blue:#1E3A8A;--wa:#25D366;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.55 'Archivo','Segoe UI',system-ui,sans-serif;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 56px;background-image:radial-gradient(ellipse 70% 40% at 80% 0,rgba(30,58,138,.35),transparent),radial-gradient(ellipse 60% 30% at 0 30%,rgba(201,164,76,.12),transparent);background-repeat:no-repeat}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-top:18px}
+.top img{height:42px;width:auto}
+.tag{background:var(--gold);color:#120d00;font:700 .75rem/1 'Archivo',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:8px 12px;border-radius:99px;border:2px solid #000}
+.hero{display:grid;gap:18px;justify-items:start}
+.hero img.logo{width:min(230px,58%);filter:drop-shadow(0 8px 0 rgba(0,0,0,.5))}
+h1{margin:0;font:400 clamp(2.4rem,9vw,4rem)/1 'Bungee','Impact',sans-serif;text-transform:uppercase;text-wrap:balance}
+h1{font-size:clamp(1.8rem,7.4vw,3rem);text-shadow:0 0 4px #fff,0 0 18px rgba(91,140,255,.8),0 0 40px #2447C9}h1 em{font:normal 400 .62em/1.1 'Rubik Spray Paint','Comic Sans MS',cursive;color:var(--gold2);text-transform:none;display:block;margin-top:.15em}
+.lead{margin:0;color:var(--soft);font-size:1.1rem;max-width:56ch}
+h2{margin:0;font:400 1.3rem/1.15 'Bungee','Impact',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+.hz{height:10px;background:repeating-linear-gradient(-45deg,#FF4457 0 10px,#F6F3EA 10px 20px,#2447C9 20px 30px,#F6F3EA 30px 40px);border-radius:3px}
+.doors{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.door{display:flex;flex-direction:column;gap:12px;min-width:0;padding:22px;background:var(--card);border:1.5px solid var(--line);border-radius:18px;border-color:rgba(255,200,61,.6);box-shadow:0 0 22px rgba(255,200,61,.3);color:inherit;text-decoration:none;transition:transform .12s,box-shadow .12s}
+.door:hover,.door:focus-visible{transform:translate(-2px,-2px);box-shadow:0 0 34px rgba(255,200,61,.55);outline:none}
+.door h2{font-size:1.9rem}
+.door p{margin:0;color:var(--soft)}
+.door ul{margin:0;padding-left:1.1em;font-size:.97rem}
+.go{margin-top:auto;align-self:flex-start;background:#F6F3EA;color:#0b1230;border:0;border-radius:999px;box-shadow:0 0 16px rgba(255,200,61,.5);padding:12px 20px;font:700 .95rem/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.sec{display:flex;flex-direction:column;gap:14px}
+.sec>p{margin:0;color:var(--soft);max-width:62ch}
+.group{font:700 .8rem/1 'Archivo',sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:8px 0 0}
+.checks{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;background:var(--card);border:1px solid var(--line);border-radius:12px;cursor:pointer;min-width:0}
+.checks input{width:20px;height:20px;margin-top:2px;accent-color:var(--gold);flex:none}
+.checks span{min-width:0}.checks small{display:block;color:var(--soft)}
+.checks input:checked+span{opacity:.55}
+.accts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px}
+.acct{padding:14px;background:var(--card2);border:1px dashed var(--gold);border-radius:12px;min-width:0}
+.acct b{display:block;font:700 .8rem/1 'Archivo',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.acct code{display:block;margin-top:6px;font:500 .9rem/1.5 ui-monospace,Menlo,monospace;overflow-wrap:anywhere}
+.note{border-left:4px solid var(--gold);padding:4px 0 4px 14px;color:var(--soft);font-size:.95rem;margin:0}
+.pending{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px}
+.pending div{padding:15px;border:1px dashed var(--line);border-radius:12px;min-width:0}
+.pending b{display:block}.pending span{color:var(--soft);font-size:.92rem}
+.reply{display:flex;flex-direction:column;gap:16px;padding:24px;background:var(--card);border:1.5px solid #5B8CFF;border-radius:20px;box-shadow:0 0 26px rgba(91,140,255,.4)}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;min-width:0}
+legend{font-weight:600;margin-bottom:8px;padding:0}
+.opt{display:flex;gap:10px;align-items:center;padding:12px 14px;background:var(--bg);border:1px solid var(--line);border-radius:12px;cursor:pointer}
+.opt input{accent-color:var(--gold);width:18px;height:18px;flex:none}
+.opt:has(input:checked){border-color:var(--gold)}
+label.t{font-weight:600;display:block;margin-bottom:6px}
+textarea{width:100%;min-height:110px;resize:vertical;background:var(--bg);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font:inherit}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+.actions{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;background:#F6F3EA;color:#0b1230;border:0;border-radius:999px;box-shadow:0 0 18px rgba(255,200,61,.5);font:800 .9rem/1 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;cursor:pointer}
+.btn.wa{background:var(--wa);color:#04210f}
+.ghost{background:none;border:0;color:var(--soft);text-decoration:underline;font:inherit;font-size:.9rem;cursor:pointer;padding:6px}
+.out{white-space:pre-wrap;margin:0;padding:14px;background:var(--bg);border:1px dashed var(--gold);border-radius:12px;font-size:.95rem;user-select:all}
+.sign{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;color:var(--soft);font-size:.85rem;padding-top:10px;border-top:1px solid var(--line)}
+.sign img{width:min(240px,64%);height:auto;margin-top:14px}
+.sign b{font:700 .85rem/1.3 'Archivo',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--fg)}
+@media (prefers-reduced-motion:reduce){.door{transition:none}}
+</style>
 
-<header class="top" id="top">
-  <div class="wrap bar">
-    <a class="brand" href="#inicio" aria-label="BERNABEUD Barbershop, inicio"><img src="img/logo-horizontal.png" alt="BERNABEUD Barbershop" width="1100" height="370"></a>
-    <nav class="nav" aria-label="Secciones">
-      <a href="#servicios">La carta</a><a href="#barberos">Barberos</a><a href="#llegar">Cómo llegar</a><a href="#redes">Redes</a>
-    </nav>
-    <div class="actions">
-      <button class="btn ghost small inst" type="button" data-install hidden>Instalar</button>
-      <button class="btn small" type="button" data-book>Reservar turno</button>
+<div class="wrap">
+  <header class="top">
+    <img src="img/logo-horizontal.png" alt="BERNABEUD Barbershop" width="180" height="42">
+    <span class="tag">Prototipo para aprobar</span>
+  </header>
+
+  <section class="hero">
+    <img class="logo" src="img/logo-main.png" alt="Escudo de BERNABEUD Barbershop" width="230" height="230">
+    <h1>Hola, Junior <em>esta es la página de tu barbería</em></h1>
+    <p class="lead">Pruébala como lo haría un cliente: reserva una cita, mírala en el celular y entra al panel de los barberos. Es una vista previa: nada se publica y no se envía ningún mensaje por ti.</p>
+  </section>
+
+  <div class="hz" aria-hidden="true"></div>
+
+  <section class="doors" aria-label="Qué quieres ver">
+    <a class="door" href="sitio.html">
+      <h2>La página</h2>
+      <p>Lo que ve la gente que llega desde Instagram o Google.</p>
+      <ul><li>Servicios con sus precios</li><li>Reserva con el barbero y la hora libre</li><li>Cómo llegar y redes sociales</li></ul>
+      <span class="go">Abrir la página</span>
+    </a>
+    <a class="door" href="panel.html">
+      <h2>El panel</h2>
+      <p>Donde cada barbero maneja su agenda.</p>
+      <ul><li>Confirma, cancela y escribe por WhatsApp</li><li>Cada barbero pone su foto y sus redes</li><li>Servicios, horarios y días libres</li></ul>
+      <span class="go">Abrir el panel</span>
+    </a>
+  </section>
+
+  <section class="sec" aria-labelledby="h-test">
+    <h2 id="h-test">Qué probar</h2>
+    <p>Marca lo que ya revisaste. Se queda guardado en este celular.</p>
+    <p class="group">En la página</p>
+    <ul class="checks">
+      <li><label><input type="checkbox" data-k="a1"><span><b>Mírala en el celular.</b><small>Abajo tiene una barra con "Reservar" en el centro. Nada se mueve al tocar.</small></span></label></li>
+      <li><label><input type="checkbox" data-k="a2"><span><b>Reserva un corte.</b><small>Elige servicio, barbero, día y hora. Las horas ocupadas no se pueden escoger.</small></span></label></li>
+      <li><label><input type="checkbox" data-k="a3"><span><b>Revisa los precios y los nombres.</b><small>¿Están bien los servicios y los valores?</small></span></label></li>
+      <li><label><input type="checkbox" data-k="a4"><span><b>Toca el escudo del inicio.</b><small>Es una sorpresa.</small></span></label></li>
+    </ul>
+    <p class="group">En el panel</p>
+    <ul class="checks">
+      <li><label><input type="checkbox" data-k="b1"><span><b>Entra con una cuenta de prueba.</b><small>Usa el ojito para ver la clave y la opción "Recordarme".</small></span></label></li>
+      <li><label><input type="checkbox" data-k="b2"><span><b>Confirma la cita que acabas de reservar.</b><small>Aparece en la Agenda del barbero que elegiste.</small></span></label></li>
+      <li><label><input type="checkbox" data-k="b3"><span><b>Pon las redes de un barbero.</b><small>En Equipo (o Mi perfil) y míralas en la página.</small></span></label></li>
+    </ul>
+    <p class="group">Cuentas de prueba</p>
+    <div class="accts">
+      <div class="acct"><b>Dueño</b><code>dueno@bernabeud.demo<br>bernabeud</code></div>
+      <div class="acct"><b>Junior</b><code>junior@bernabeud.demo<br>junior123</code></div>
+      <div class="acct"><b>Nelly</b><code>nelly@bernabeud.demo<br>nelly123</code></div>
     </div>
-  </div>
-  <nav class="chips" id="bnav" aria-label="Ir a">
-    <a href="#inicio" data-s="inicio">Inicio</a><a href="#servicios" data-s="servicios">La carta</a><a href="#barberos" data-s="barberos">Barberos</a><a href="#reservar" data-s="reservar">Turno</a><a href="#llegar" data-s="llegar">Llegar</a><a href="#redes" data-s="redes">Redes</a>
-  </nav>
-</header>
+    <p class="note">Estas cuentas son solo de prueba. En la versión real cada barbero tendrá la suya.</p>
+  </section>
 
-<main>
-  <!-- PORTADA -->
-  <section class="hero" id="inicio" aria-labelledby="h1">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <p class="eyebrow open-line"><span class="pill live" id="openPill"></span><span id="hoursPill"></span></p>
-        <h1 id="h1"><span class="neon-w">Tu corte,</span><span class="neon-g">tu corona.</span></h1>
-        <p class="marker tagline" id="tagline"></p>
-        <p class="lead">Escoge el servicio, escoge a tu barbero y marca la hora que te sirve. Sin llamadas y sin esperar en la puerta.</p>
-        <div class="cta">
-          <button class="btn" type="button" data-book>Reservar mi turno</button>
-          <a class="btn ghost" href="#servicios">Ver la carta</a>
-        </div>
-        <button class="clave" id="clave" type="button" aria-pressed="false" aria-label="Activar o apagar la clave de salsa"><span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="clave-t">Dale a la clave</span><small>Salsa · toca para sonar</small></button>
-      </div>
-      <div class="hero-art">
-        <span class="pitch" aria-hidden="true"></span>
-        <span class="hala marker" aria-hidden="true">¡Hala Madrid!</span>
-        <button class="mirror" id="sticker" type="button" aria-label="Logo BERNABEUD Barbershop: tócalo">
-          <span class="frame"></span>
-          <img class="sticker" src="img/logo-main.png" alt="Logo de BERNABEUD Barbershop: escudo con corona, BB, postes de barbero y navajas" width="900" height="1047" fetchpriority="high">
-          <span class="shine"></span>
-        </button>
-      </div>
+  <section class="sec" aria-labelledby="h-pend">
+    <h2 id="h-pend">Qué falta para publicarla</h2>
+    <div class="pending">
+      <div><b>Dirección y mapa</b><span>Para la sección "Cómo llegar".</span></div>
+      <div><b>WhatsApp de la barbería</b><span>Para avisos y el botón flotante.</span></div>
+      <div><b>Redes sociales</b><span>Instagram, TikTok y Facebook.</span></div>
+      <div><b>Fotos de los barberos</b><span>Opcional, se suben desde el panel.</span></div>
     </div>
   </section>
 
-  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
-  <!-- LA CARTA -->
-  <section class="sec" id="servicios" aria-labelledby="hSv">
-    <div class="wrap">
-      <p class="num">01 / La carta</p>
-      <h2 class="sign" id="hSv">Servicios <span>y precios</span></h2>
-      <div class="menu">
-        <div class="menu-head"><span>Barbershop Bernabeud</span><span>Precios en pesos</span></div>
-        <div class="menu-rows" id="svGrid"></div>
-        <p class="menu-foot marker">Rayas y cejas adicionales incluidas en todos los cortes.</p>
-      </div>
+  <section class="reply" aria-labelledby="h-reply">
+    <h2 id="h-reply">Tu respuesta</h2>
+    <fieldset>
+      <legend>¿Qué te pareció?</legend>
+      <label class="opt"><input type="radio" name="ok" value="Me gusta así, aprobado." checked> Me gusta así, aprobado</label>
+      <label class="opt"><input type="radio" name="ok" value="Me gusta, pero quiero estos cambios:"> Me gusta, pero quiero cambios</label>
+      <label class="opt"><input type="radio" name="ok" value="Quiero ver otra propuesta. Esto es lo que no me convence:"> Quiero ver otra propuesta</label>
+    </fieldset>
+    <div><label class="t" for="cambios">Cambios o ideas (opcional)</label><textarea id="cambios" placeholder="Ej.: otro color, un servicio nuevo, cambiar un precio…"></textarea></div>
+    <div class="actions"><button class="btn" id="make" type="button">Preparar mi respuesta</button></div>
+    <div id="result" hidden>
+      <p class="note" style="margin-bottom:10px">Envíaselo a Fabian por WhatsApp.</p>
+      <pre class="out" id="out"></pre>
+      <div class="actions" style="margin-top:12px"><a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Abrir WhatsApp</a><button class="btn" id="copy" type="button">Copiar texto</button><span id="copied" role="status"></span></div>
     </div>
+    <button class="ghost" id="reset" type="button">Volver los datos de ejemplo al inicio</button>
   </section>
 
-  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
-  <!-- BARBEROS -->
-  <section class="sec" id="barberos" aria-labelledby="hBr">
-    <div class="wrap">
-      <p class="num">02 / El equipo</p>
-      <h2 class="sign" id="hBr">Alineación <span>titular</span></h2>
-      <div class="br-grid" id="brGrid"></div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
-  <!-- TURNO -->
-  <section class="sec" id="reservar" aria-labelledby="hRes">
-    <div class="wrap">
-      <p class="num">03 / Tu turno</p>
-      <h2 class="sign" id="hRes">Tu hora, <span>sin filas</span></h2>
-      <div class="ticket">
-        <div class="stub">
-          <p class="stub-n">ENTRADA</p>
-          <p class="match"><span>Partido</span><b>Tu corte</b><span>Grada</span><b>Silla de barbero</b><span>Puertas</span><b>9:00 a. m.</b></p>
-          <ol class="steps">
-            <li><b>1</b><span>Elige el servicio</span></li>
-            <li><b>2</b><span>Escoge barbero</span></li>
-            <li><b>3</b><span>Marca día y hora libre</span></li>
-            <li><b>4</b><span>Confirma y listo</span></li>
-          </ol>
-          <button class="btn" type="button" data-book>Reservar ahora</button>
-        </div>
-        <div class="board" id="today" aria-live="polite"></div>
-      </div>
-    </div>
-  </section>
-
-  <div class="wrap"><div class="pole-div" aria-hidden="true"></div></div>
-  <!-- CÓMO LLEGAR -->
-  <section class="sec" id="llegar" aria-labelledby="hLl">
-    <div class="wrap">
-      <p class="num">04 / Ven a visitarnos</p>
-      <h2 class="sign" id="hLl">Cómo <span>llegar</span></h2>
-      <div class="loc-grid">
-        <div class="loc-card">
-          <p class="lbl">Dirección</p>
-          <p class="addr" id="addr"></p>
-          <p class="lbl">Horario</p>
-          <ul class="hrs" id="hrs"></ul>
-          <div class="loc-btns" id="locBtns"></div>
-        </div>
-        <div class="map" id="map" role="img" aria-label="Mapa ilustrado de la ubicación">
-          <svg viewBox="0 0 400 300" aria-hidden="true">
-            <rect width="400" height="300" fill="#0c0c12"/>
-            <g stroke="#232331" stroke-width="14" fill="none" stroke-linecap="round"><path d="M-10 90 L410 70"/><path d="M-10 200 L410 230"/><path d="M110 -10 L130 310"/><path d="M290 -10 L270 310"/></g>
-            <g stroke="#5B8CFF" stroke-opacity=".7" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round" fill="none"><path d="M30 250 C120 230 150 120 200 130 S300 150 330 70"/></g>
-            <g transform="translate(200 120)"><path d="M0 0 C-26 -34 -26 -62 0 -62 C26 -62 26 -34 0 0Z" fill="#FFC83D"/><circle cy="-42" r="9" fill="#07070A"/></g>
-            <circle cx="200" cy="124" r="34" fill="#FFC83D" fill-opacity=".14"/>
-          </svg>
-          <span class="map-tag marker">¡Aquí es!</span>
-        </div>
-      </div>
-      <ol class="how-to" id="howTo"></ol>
-    </div>
-  </section>
-
-  <!-- REDES -->
-  <section class="sec" id="redes" aria-labelledby="hRd">
-    <div class="wrap">
-      <p class="num">05 / Síguenos</p>
-      <h2 class="sign" id="hRd">En <span>redes</span></h2>
-      <div class="socials" id="socials"></div>
-    </div>
-  </section>
-</main>
-
-<footer class="foot">
-  <div class="pole-line" aria-hidden="true"></div>
-  <div class="wrap foot-in">
-    <div class="foot-brand">
-      <img src="img/logo-horizontal.png" alt="BERNABEUD Barbershop" width="1100" height="370" loading="lazy">
-      <p class="neon-tag" id="footTag"></p>
-    </div>
-    <nav class="flinks" aria-label="Pie de página">
-      <a href="#servicios">La carta</a><a href="#barberos">Barberos</a><a href="#llegar">Cómo llegar</a><a href="panel.html">Acceso barberos</a>
-      <button type="button" class="linkbtn" data-install hidden>Instalar app</button>
-    </nav>
-    <nav class="legal" aria-label="Información legal">
-      <button type="button" data-legal="datos">Política de tratamiento y protección de datos personales</button>
-      <button type="button" data-legal="terminos">Términos de servicio</button>
-      <button type="button" data-legal="reembolso">Política de reembolso</button>
-      <button type="button" data-legal="reservas">Política de reservas</button>
-      <button type="button" data-legal="quienes" class="on">¿Quiénes somos?</button>
-      <p class="copy" id="copy">© BERNABEUD Barbershop · Todos los derechos reservados.</p>
-    </nav>
-    <div class="onytek">
-      <span class="by">Desarrollado por</span>
-      <a href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, abrir www.onytek.co"><img src="img/onytek.png" alt="Onytek" width="900" height="165" loading="lazy"></a>
-      <p class="lema">Tecnología con propósito, <span>ejecución con precisión.</span></p>
-    </div>
-  </div>
-</footer>
-
-<!-- barra inferior (móvil): un solo botón grande -->
-<div class="cta-bar" id="ctaBar">
-  <button type="button" class="cta-main" data-book aria-label="Reservar turno">
-    <span class="cta-l"><b>Reservar turno</b><small>Elige barbero y hora libre</small></span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-  </button>
+  <footer class="sign">
+    <span>Prototipo hecho por</span>
+    <a href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, ir a onytek.co"><img src="img/onytek.png" alt="Onytek" width="240" height="60"></a>
+    <b>Tecnología con propósito, ejecución con precisión.</b>
+  </footer>
 </div>
 
-<a class="wafab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp" hidden>
-  <span class="wa-dot"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></span>
-</a>
-
-<!-- reserva: modal / hoja inferior -->
-<div class="layer" id="book" aria-hidden="true">
-  <div class="scrim"></div>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="bTitle">
-    <div class="sh-head">
-      <h2 id="bTitle">Reservar turno</h2>
-      <button class="x" type="button" data-close aria-label="Cerrar">×</button>
-    </div>
-    <div class="sh-body" id="bBody"></div>
-    <div class="sh-foot" id="bFoot"></div>
-  </div>
-</div>
-<div class="layer" id="legal" aria-hidden="true">
-  <div class="scrim"></div>
-  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="lgT">
-    <div class="sh-head"><h2 id="lgT"></h2><button class="x" type="button" data-close aria-label="Cerrar">×</button></div>
-    <div class="sh-body legal-body" id="lgB"></div>
-    <div class="sh-foot"><button class="btn" type="button" data-close>Cerrar</button></div>
-  </div>
-</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script src="core.js"></script>
-<script src="site.js"></script>
-<script>if ('serviceWorker' in navigator) addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });</script>
-</body>
-</html>
+<script>
+(function () {
+  var KEY = 'bb_proto_checks', saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { saved = {}; }
+  var boxes = document.querySelectorAll('.checks input');
+  boxes.forEach(function (b) { b.checked = !!saved[b.dataset.k]; b.addEventListener('change', function () { saved[b.dataset.k] = b.checked; try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {} }); });
+  var out = document.getElementById('out'), res = document.getElementById('result');
+  document.getElementById('make').addEventListener('click', function () {
+    var ok = document.querySelector('input[name=ok]:checked').value, extra = document.getElementById('cambios').value.trim();
+    var done = Array.prototype.filter.call(boxes, function (b) { return b.checked; }).length;
+    var t = 'Hola Fabian, ya vi el prototipo de la página de BERNABEUD.\n' + ok + (extra ? '\n\n' + extra : '') + '\n\n(Revisé ' + done + ' de ' + boxes.length + ' puntos de la lista.)\n— Junior';
+    out.textContent = t; document.getElementById('wa').href = 'https://wa.me/573002072739?text=' + encodeURIComponent(t);
+    res.hidden = false; res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var m = document.getElementById('copied');
+    function sel() { var r = document.createRange(); r.selectNodeContents(out); var s = getSelection(); s.removeAllRanges(); s.addRange(r); m.textContent = 'Texto seleccionado, cópialo.'; }
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(out.textContent).then(function () { m.textContent = 'Copiado'; }, sel); else sel();
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    try { ['bernabeud-proto-v1', 'bernabeud-auth-v1', 'bernabeud-cliente', KEY].forEach(function (k) { localStorage.removeItem(k); sessionStorage.removeItem(k); }); } catch (e) {}
+    boxes.forEach(function (b) { b.checked = false; }); document.getElementById('copied').textContent = 'Listo, datos de ejemplo restablecidos.';
+  });
+})();
+</script>
