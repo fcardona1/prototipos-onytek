@@ -1,0 +1,4 @@
+BERNABEUD Barbershop - PROTOTIPO (datos de prueba en el navegador)
+Subir la carpeta "bernabeud" a prototipos-onytek (Vercel). Sitio: index.html. Panel: panel.html.
+Cuentas de prueba: dueno@bernabeud.demo / bernabeud | junior@bernabeud.demo / junior123 | nelly@bernabeud.demo / nelly123
+Pendiente del cliente: direccion, enlace de Maps, WhatsApp, redes, slogan definitivo.

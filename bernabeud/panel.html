@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel · BERNABEUD Barbershop</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="manifest" href="panel.webmanifest">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/app-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Bungee&family=Rubik+Spray+Paint&family=Special+Elite&display=swap">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="panel.css">
+</head>
+<body class="street">
+<div class="rail" aria-hidden="true"></div>
+
+<!-- ACCESO -->
+<main class="lg" id="gate">
+  <form class="lg-card" id="loginForm" novalidate>
+    <img class="lg-logo" src="img/logo-main.png" alt="BERNABEUD Barbershop">
+    <p class="eyebrow">Panel de barberos</p>
+    <div class="field"><label for="lEmail">Correo</label><input class="in" id="lEmail" type="email" autocomplete="username" inputmode="email" autocapitalize="off" placeholder="tu@correo.com"></div>
+    <div class="field"><label for="lPass">Contraseña</label>
+      <div class="pw"><input class="in" id="lPass" type="password" autocomplete="current-password" placeholder="••••••••">
+        <button class="eye" type="button" id="eye" aria-label="Mostrar contraseña"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
+    <label class="chk"><input type="checkbox" id="lRem" checked> Recordarme en este dispositivo</label>
+    <p class="err" id="lErr" hidden></p>
+    <button class="btn" type="submit">Entrar</button>
+    <div class="demo"><span>Cuentas de prueba</span>
+      <button type="button" class="chip" data-demo="dueno@bernabeud.demo|bernabeud">Dueño</button>
+      <button type="button" class="chip" data-demo="junior@bernabeud.demo|junior123">Junior</button>
+      <button type="button" class="chip" data-demo="nelly@bernabeud.demo|nelly123">Nelly</button></div>
+    <a class="back" href="index.html">← Volver a la página</a>
+    <div class="lg-on"><span>Desarrollado por</span><img src="img/onytek.png" alt="Onytek"><em>Tecnología con propósito, ejecución con precisión.</em></div>
+  </form>
+</main>
+
+<!-- APP -->
+<div class="app" id="app" hidden>
+  <header class="top">
+    <img class="top-logo" src="img/monograma.png" alt="">
+    <div class="top-t"><b id="whoName">Panel</b><small id="whoRole"></small></div>
+    <a class="ib" href="index.html" aria-label="Ver la página"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8v10a1 1 0 01-1 1h-5v-7H9v7H4a1 1 0 01-1-1z"/></svg><span>Sitio</span></a>
+    <button class="ib" type="button" id="logout" aria-label="Cerrar sesión"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg><span>Salir</span></button>
+  </header>
+
+  <nav class="side" id="nav" aria-label="Secciones"></nav>
+
+  <main class="main">
+    <section id="v-agenda" class="view"></section>
+    <section id="v-servicios" class="view" hidden></section>
+    <section id="v-equipo" class="view" hidden></section>
+    <section id="v-horarios" class="view" hidden></section>
+    <section id="v-ajustes" class="view" hidden></section>
+
+    <footer class="pfoot">
+      <div class="hz"></div>
+      <div class="onytek">
+        <span class="by">Desarrollado por</span>
+        <img src="img/onytek.png" alt="Onytek">
+        <p class="lema">Tecnología con propósito, <span>ejecución con precisión.</span></p>
+      </div>
+      <p class="mini">BERNABEUD Barbershop · Panel de gestión</p>
+    </footer>
+  </main>
+
+  <button class="fab" type="button" id="fab" aria-label="Nueva cita"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></button>
+</div>
+
+<!-- hoja: formularios -->
+<div class="layer" id="sheet" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="shT">
+  <div class="scrim"></div>
+  <div class="sheet">
+    <div class="sh-head"><h2 id="shT"></h2><button class="x" type="button" data-close aria-label="Cerrar">×</button></div>
+    <div class="sh-body" id="shB"></div>
+    <div class="sh-foot" id="shF"></div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="core.js"></script>
+<script src="panel.js"></script>
+<script>if ('serviceWorker' in navigator) addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });</script>
+</body>
+</html>
