@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Panel de NOVAMIX</title>
+<meta name="theme-color" content="#0D1B54">
 <link rel="icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,17 +20,25 @@
 
 <!-- ENTRADA -->
 <main id="login" class="login" hidden>
+  <i class="toy t1" aria-hidden="true"></i><i class="toy t2" aria-hidden="true"></i><i class="toy t3" aria-hidden="true"></i><i class="toy t4" aria-hidden="true"></i><i class="toy t5" aria-hidden="true"></i><i class="toy t6" aria-hidden="true"></i>
   <form class="lcard" id="loginForm" autocomplete="off">
-    <img class="lmark" src="img/icono-circular.webp" alt="NOVAMIX" width="112" height="112">
-    <h1>Panel de NOVAMIX</h1>
+    <div class="studs" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <span class="lmark"><img src="img/icono-circular.webp" alt="NOVAMIX" width="104" height="104"></span>
+    <small class="lkick">Panel de control</small>
+    <h1 class="ltitle" aria-label="NOVAMIX"><b aria-hidden="true">N</b><b aria-hidden="true">O</b><b aria-hidden="true">V</b><b aria-hidden="true">A</b><b aria-hidden="true">M</b><b aria-hidden="true">I</b><b aria-hidden="true">X</b></h1>
     <p class="muted">Aquí cargas y cambias tus productos. Es solo para ti.</p>
     <label class="field"><span class="lbl">Usuario</span><input class="in" id="lUser" value="jenny" autocapitalize="none" autocomplete="username"></label>
     <label class="field"><span class="lbl">Contraseña</span>
       <span class="pw"><input class="in" id="lPass" type="password" autocomplete="current-password" placeholder="Escribe cualquier cosa"><button type="button" class="eye" id="eye" aria-label="Mostrar contraseña">👁</button></span></label>
     <label class="chk"><input type="checkbox" id="lRem" checked> Recordarme en este equipo</label>
-    <button class="btn block" type="submit">Entrar</button>
+    <button class="btn block toybtn" type="submit">Entrar</button>
     <p class="hint">Es una prueba: la contraseña real se crea cuando la tienda quede en línea.</p>
     <p class="hint"><a href="store.html">← Volver a la tienda</a></p>
+    <a class="lbrick" href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Desarrollado por Onytek, abrir www.onytek.co">
+      <span class="bstuds" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+      <small>Desarrollado por</small>
+      <img src="img/onytek-color.png" alt="Onytek" width="640" height="118">
+    </a>
   </form>
 </main>
 
