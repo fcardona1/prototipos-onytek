@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NOVAMIX</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<style>
+.hero { background: linear-gradient(180deg, var(--sky), var(--bg)); padding: 2rem 0 1.2rem; text-align: center; }
+.hero img { margin: 0 auto 1rem; width: min(300px, 70%); height: auto; }
+.hero h1 { font-size: clamp(1.9rem, 6vw, 2.8rem); color: var(--navy); }
+.hero p { max-width: 560px; margin: .8rem auto 0; color: var(--muted); }
+.doors { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+.door { display: grid; gap: .6rem; align-content: start; padding: 1.4rem; background: var(--surface); border-radius: 28px; box-shadow: var(--shadow); }
+.door h2 { font-size: 1.5rem; color: var(--navy); }
+.door p { color: var(--muted); }
+.door .btn { justify-self: start; }
+.sec { background: var(--surface); border-radius: 28px; box-shadow: var(--shadow-s); padding: 1.4rem; margin-bottom: 1rem; display: grid; gap: .8rem; }
+.sec h3 { font-size: 1.35rem; color: var(--navy); }
+.sec ul { margin: 0; padding-left: 1.2rem; display: grid; gap: .45rem; }
+.chk { display: flex; gap: .7rem; align-items: flex-start; list-style: none; margin-left: -1.2rem; }
+.chk input { width: 22px; height: 22px; margin-top: .15rem; accent-color: var(--blue); flex: none; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.tag { display: inline-block; font: 700 .75rem/1 var(--body); padding: .3rem .6rem; border-radius: 999px; background: #FFF3D1; color: #8A5A00; }
+.out { white-space: pre-wrap; background: var(--bg); border-radius: 18px; padding: 1rem; font-size: .95rem; border: 2px dashed var(--sky2); }
+@media (max-width: 700px) { .doors, .two { grid-template-columns: 1fr; } }
+</style>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/app-192.png">
+<meta name="theme-color" content="#0D1B54">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
+<header class="hero"><div class="wrap">
+  <img src="img/logo-horizontal.webp" alt="NOVAMIX, un poco de todo, para todos" width="300" height="120">
+  <h1>Hola, Jenny, esta es tu tienda</h1>
+  <p>Aquí vas a vender lociones, juguetes y regalos. Tus clientes eligen, te preguntan por WhatsApp si hay disponible y tú les respondes. Tócala y pruébala como si fuera de verdad.</p>
+</div></header>
+
+<main class="wrap">
+  <div class="doors">
+    <div class="door"><h2>🎁 La tienda</h2><p>Así la ven tus clientes. Mira un regalo y toca “Preguntar disponibilidad”.</p><a class="btn wa" href="store.html">Ver la tienda</a></div>
+    <div class="door"><h2>🔑 Tu panel</h2><p>Aquí agregas productos, cambias precios y marcas lo que se agotó. Entra con cualquier clave.</p><a class="btn" href="panel.html">Entrar a mi panel</a></div>
+  </div>
+
+  <section class="sec">
+    <h3>Pruébala en 5 pasos</h3>
+    <ul>
+      <li class="chk"><label><input type="checkbox"> Abre la tienda y toca un regalo</label></li>
+      <li class="chk"><label><input type="checkbox"> Elige una opción y toca “Preguntar disponibilidad”: mira cómo ya sale el mensaje armado</label></li>
+      <li class="chk"><label><input type="checkbox"> Agrega dos regalos a “Mi lista” y pregunta por todos juntos</label></li>
+      <li class="chk"><label><input type="checkbox"> En el panel, agrega un producto tuyo con foto y precio</label></li>
+      <li class="chk"><label><input type="checkbox"> Vuelve a la tienda: tu producto ya está ahí</label></li>
+    </ul>
+    <p class="hint">Todo lo que cargues queda guardado solo en este teléfono o computador, porque es una prueba.</p>
+  </section>
+
+  <div class="two">
+    <section class="sec"><h3>Es de ejemplo <span class="tag">cambiar</span></h3>
+      <ul><li>Los 9 productos, sus precios y sus dibujos</li><li>El aviso de arriba y los textos legales (son borradores)</li><li>La clave del panel: la real se crea al publicar</li></ul></section>
+    <section class="sec"><h3>Lo que falta <span class="tag">necesito de ti</span></h3>
+      <ul><li>Tu número de WhatsApp</li><li>Fotos y precios reales</li><li>Tu Instagram, TikTok o enlace de comunidad</li></ul></section>
+  </div>
+
+  <section class="sec">
+    <h3>Cuéntanos qué te pareció</h3>
+    <p class="muted">Responde y se arma un mensaje listo para enviarle a Fabian.</p>
+    <form id="fb" class="sec" style="box-shadow:none;padding:0;margin:0">
+      <label class="field"><span class="lbl">¿Te gustó cómo se ve?</span><select class="in" id="q1"><option>Sí, me encantó</option><option>Me gustó, pero cambiaría cosas</option><option>No me convenció</option></select></label>
+      <label class="field"><span class="lbl">¿Se entiende cómo pedir por WhatsApp?</span><select class="in" id="q2"><option>Sí, muy claro</option><option>Más o menos</option><option>No se entiende</option></select></label>
+      <label class="field"><span class="lbl">¿Pudiste cargar un producto en el panel?</span><select class="in" id="q3"><option>Sí, fácil</option><option>Sí, pero me costó</option><option>No pude</option><option>Aún no lo he probado</option></select></label>
+      <label class="field"><span class="lbl">¿Qué le agregarías o cambiarías?</span><textarea class="in" id="q4" placeholder="Escribe lo que quieras"></textarea></label>
+      <button class="btn" type="submit">Armar mi mensaje</button>
+    </form>
+    <div id="res" hidden>
+      <div class="out" id="resTxt"></div>
+      <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:.8rem"><button class="btn small" id="copy" type="button">Copiar mensaje</button><a class="btn wa small" id="send" target="_blank" rel="noopener" href="#">Enviar por WhatsApp</a></div>
+      <p class="hint" id="copyMsg" role="status"></p>
+    </div>
+  </section>
+
+  <div class="made">
+      <a class="made-logo" href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, abrir www.onytek.co"><img src="img/onytek.png" alt="Onytek" width="640" height="118" loading="lazy"></a>
+      <div class="made-txt"><small>Desarrollado por</small><b>Onytek</b><em>Tecnología con propósito, ejecución con precisión.</em></div>
+      <a class="made-cta" href="https://wa.me/573002072739?text=Hola%20Onytek%2C%20vi%20la%20tienda%20NOVAMIX%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>¿Quieres una así?</a>
+    </div>
+</main>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(function () {
+  var f = document.getElementById('fb');
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var t = 'Hola Fabian, probé la tienda NOVAMIX 🎁\n\n' +
+      '• Diseño: ' + q1.value + '\n• Pedir por WhatsApp: ' + q2.value + '\n• Cargar producto: ' + q3.value + '\n• Comentarios: ' + (q4.value.trim() || 'Sin comentarios por ahora');
+    document.getElementById('resTxt').textContent = t;
+    document.getElementById('res').hidden = false;
+    document.getElementById('send').href = 'https://wa.me/?text=' + encodeURIComponent(t);
+  });
+  document.getElementById('copy').addEventListener('click', function () {
+    var m = document.getElementById('copyMsg'), t = document.getElementById('resTxt').textContent;
+    try { navigator.clipboard.writeText(t).then(function () { m.textContent = '✓ Copiado'; }, function () { m.textContent = 'No se pudo copiar: selecciona el texto y cópialo.'; }); }
+    catch (e) { m.textContent = 'No se pudo copiar: selecciona el texto y cópialo.'; }
+  });
+})();
+</script>
+<script>if ('serviceWorker' in navigator) { addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }</script>
+</body>
+</html>

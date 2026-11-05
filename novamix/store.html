@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NOVAMIX</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="store.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="img/app-192.png">
+<meta name="theme-color" content="#0D1B54">
+</head>
+<body>
+<a class="sr" href="#catalogo">Ir al catálogo</a>
+
+<div class="promo" id="promo" hidden>
+  <div class="wrap"><span id="promoText"></span><b class="days" id="promoDays" hidden></b></div>
+</div>
+
+<header class="top" id="top">
+  <div class="island">
+    <a class="brand" href="#top" aria-label="NOVAMIX, inicio"><img src="img/logo-horizontal.webp" alt="NOVAMIX. Un poco de todo, para todos" width="1200" height="379"></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#catalogo">Regalos</a>
+      <a href="#como">Cómo pedir</a>
+      <a href="#navidad">Navidad</a>
+      <a href="#nosotros">Jenny</a>
+    </nav>
+    <button class="cartbtn" id="cartBtn" type="button" aria-label="Abrir mi lista">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.4-9.2C1.2 8.4 3.2 5 6.6 5c2 0 3.7 1.1 5.4 3.2C13.700 6.100 15.400 5 17.400 5c3.400 0 5.400 3.400 4 6.800C19.500 16.400 12 21 12 21Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <span class="t">Mi lista</span><b id="cartCount">0</b>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" aria-labelledby="h1">
+    <i class="bub b1" aria-hidden="true"></i><i class="bub b2" aria-hidden="true"></i><i class="bub b3" aria-hidden="true"></i><i class="bub b4" aria-hidden="true"></i>
+    <div class="wrap hero-c">
+      <p class="pill" id="heroPill"><span class="dot"></span><span id="heroPillText">Regalos para toda la familia</span></p>
+      <h1 id="h1"><span class="w w1">Un poco</span> <span class="w w2">de todo,</span><span class="l2"><span class="w w3">para</span> <span class="w w4">todos</span></span></h1>
+      <div class="stage">
+        <div class="orb"><img src="img/mix.webp" alt="Cubos de colores con un frasco de loción, un osito, un regalo y un carrito" width="900" height="925" fetchpriority="high"></div>
+        <div class="orbits" id="orbits" aria-label="Entrar por categoría"></div>
+      </div>
+      <div class="strip" id="strip" aria-label="Regalos para mirar"></div>
+      <p class="lead" id="lead"></p>
+      <div class="cta center">
+        <a class="btn big" href="#catalogo">Ver los regalos</a>
+        <a class="btn wa big" id="heroWa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Escríbele a Jenny</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="ribbons" aria-hidden="true">
+    <div class="rib r1"><div class="track"><span>Un poco de todo, para todos</span><span>Separa con el <b class="pctTxt">50</b>%</span><span>Pregunta por WhatsApp</span><span>Navidad 2026</span><span>Un poco de todo, para todos</span><span>Separa con el <b class="pctTxt">50</b>%</span><span>Pregunta por WhatsApp</span><span>Navidad 2026</span></div></div>
+    <div class="rib r2"><div class="track back"><span>Juguetes</span><span>Lociones</span><span>Detalles</span><span>Ofertas</span><span>Regalos para todos</span><span>Juguetes</span><span>Lociones</span><span>Detalles</span><span>Ofertas</span><span>Regalos para todos</span></div></div>
+  </div>
+
+  <section class="catalog" id="catalogo" aria-labelledby="hCat">
+    <div class="wrap">
+      <div class="cat-head">
+        <p class="eyebrow">El catálogo</p>
+        <h2 id="hCat">Escoge tu <span class="squig">regalo</span></h2>
+        <p class="count" id="count" aria-live="polite"></p>
+        <p class="note" aria-hidden="true">toca el + para guardarlo en tu lista</p>
+      </div>
+      <div class="tools">
+        <div class="field search">
+          <label class="sr" for="q">Buscar un regalo</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2.200"/><path d="M20 20l-3.500-3.500" stroke="currentColor" stroke-width="2.200" stroke-linecap="round"/></svg>
+          <input class="in" id="q" type="search" placeholder="Busca un juguete, una loción, un detalle" autocomplete="off">
+        </div>
+        <div class="field sortf">
+          <label class="sr" for="sort">Ordenar</label>
+          <select class="in" id="sort">
+            <option value="rec">Recomendados</option>
+            <option value="low">Precio: menor a mayor</option>
+            <option value="high">Precio: mayor a menor</option>
+            <option value="off">Mayor descuento</option>
+          </select>
+        </div>
+        <button class="btn gold" id="surprise" type="button"><span aria-hidden="true">🎲</span> Sorpréndeme</button>
+      </div>
+      <div class="budget" id="budget" role="group" aria-label="Mi presupuesto"><span class="blbl">Mi presupuesto</span></div>
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden>
+        <h3>No encontramos ese regalo</h3>
+        <p class="muted" id="emptyMsg">Prueba con otra palabra o mira todas las categorías.</p>
+        <button class="btn ghost small" id="clear" type="button">Ver todo</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="como" aria-labelledby="hHow">
+    <div class="wrap">
+      <p class="eyebrow c">Muy fácil</p>
+      <h2 class="c" id="hHow">Pedir es <span class="squig">así de fácil</span></h2>
+      <div class="bento">
+        <article class="tile t-wa">
+          <span class="num">1</span><span class="num n2">2</span>
+          <h3>Escoge y pregunta por WhatsApp</h3>
+          <p>Abre el regalo que te guste, elige opción y cantidad, y toca el botón verde. El mensaje le llega a <span class="ownerName">Jenny</span> ya armado.</p>
+          <div class="chat" aria-hidden="true">
+            <div class="msg me">Hola 👋 ¿Está disponible la cocinita? Pago: separar con el <span class="pctTxt">50</span>%</div>
+            <div class="msg her">¡Hola! Sí, te la separo 🎁</div>
+            <small>Ejemplo de cómo se ve la conversación</small>
+          </div>
+        </article>
+        <article class="tile t-pct">
+          <span class="num">3</span>
+          <div class="ring" aria-hidden="true"><b><span class="pctTxt">50</span>%</b></div>
+          <div><h3>Separa con el <span class="pctTxt">50</span>%</h3><p>Hoy pagas la mitad y el resto lo completas después.</p></div>
+        </article>
+        <article class="tile t-full">
+          <span class="num">3</span>
+          <h3>O paga completo</h3>
+          <p>Pagas todo y <span class="ownerName">Jenny</span> deja tu regalo listo.</p>
+        </article>
+        <article class="tile t-no">
+          <span class="stamp">Sin créditos</span>
+          <p>O pagas completo, o separas con el <span class="pctTxt">50</span>%. Así de claro.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="xmas" id="navidad" aria-labelledby="hXmas">
+    <svg class="wave top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#F4F9FF" d="M0 0H1440V40C1320 76 1200 84 1080 60S840 4 720 20 480 76 360 66 120 20 0 52Z"/></svg>
+    <div class="lights" id="lights" aria-hidden="true"></div>
+    <div class="snow" id="snow" aria-hidden="true"></div>
+    <div class="wrap xc">
+      <div class="xmas-img" id="xmasImg"><span class="halo" aria-hidden="true"></span><img src="img/navidad.webp" alt="Logo de NOVAMIX con gorro de Santa, moño rojo y copos de nieve" width="900" height="900" loading="lazy"></div>
+      <p class="eyebrow">Navidad 2026</p>
+      <h2 id="hXmas">Separa hoy el regalo, <span class="gold">paga el resto después</span></h2>
+      <p class="lead" id="xmasLead"></p>
+      <div class="clock" id="countBox" hidden role="timer" aria-label="Tiempo que falta para Navidad"><div><b id="cD">0</b><span>días</span></div><div><b id="cH">00</b><span>horas</span></div><div><b id="cM">00</b><span>min</span></div><div><b id="cS">00</b><span>seg</span></div></div>
+      <div class="cta center">
+        <button class="btn light big" id="xmasBtn" type="button">Ver ideas para Navidad</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="nosotros" aria-labelledby="hAbout">
+    <div class="wrap">
+      <article class="letter">
+        <span class="tape t1" aria-hidden="true"></span><span class="tape t2" aria-hidden="true"></span>
+        <img class="sticker" src="img/sticker.webp" alt="Logo de NOVAMIX" width="800" height="800" loading="lazy">
+        <p class="eyebrow">Una cartita de Jenny</p>
+        <h2 id="hAbout">¡Hola! Soy <span class="ownerName">Jenny</span></h2>
+        <p class="hand">NOVAMIX nació para que encuentres un poco de todo en un solo lugar: regalos para niños, lociones y lo que vaya llegando. Cada pedido lo atiendo yo directo por WhatsApp, con cariño.</p>
+        <p class="sig">Jenny Cardona<small>CEO &amp; Founder</small></p>
+        <div class="cta">
+          <a class="btn wa" id="aboutWa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Hablar con Jenny</a>
+          <span id="comBtn"></span>
+        </div>
+        <div class="socials" id="socials"></div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <svg class="wave top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path fill="#F4F9FF" d="M0 0H1440V30C1280 80 1120 80 960 44S640 -6 480 26 160 76 0 40Z"/></svg>
+  <div class="wrap">
+    <div class="foot-hero">
+      <img src="img/icono-circular.webp" alt="" width="800" height="800" loading="lazy">
+      <h2>¿Te gustó algo?</h2>
+      <p id="footTag"></p>
+      <a class="btn wa big" id="footWa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>Hablar con Jenny</a>
+      <a class="phone" id="footPhone" href="#" target="_blank" rel="noopener"></a>
+    </div>
+    <nav class="fnav" aria-label="Pie de página"><a href="#catalogo">Regalos</a><a href="#como">Cómo pedir</a><a href="#navidad">Navidad</a><a href="#nosotros">Jenny</a></nav>
+
+    <nav class="legal" aria-label="Información legal">
+      <button type="button" data-legal="datos">Política de tratamiento y protección de datos personales</button>
+      <button type="button" data-legal="terminos">Términos de servicio</button>
+      <button type="button" data-legal="separados">Política de separados</button>
+      <button type="button" data-legal="reembolso">Política de reembolso</button>
+      <button type="button" data-legal="envios">Política de envíos</button>
+      <a href="#nosotros">¿Quiénes somos?</a>
+    </nav>
+    <p class="copy">© <span id="year">2026</span> NOVAMIX · Todos los derechos reservados</p>
+
+    <div class="made">
+      <a class="made-logo" href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, abrir www.onytek.co"><img src="img/onytek.png" alt="Onytek" width="640" height="118" loading="lazy"></a>
+      <div class="made-txt"><small>Desarrollado por</small><b>Onytek</b><em>Tecnología con propósito, ejecución con precisión.</em></div>
+      <a class="made-cta" href="https://wa.me/573002072739?text=Hola%20Onytek%2C%20vi%20la%20tienda%20NOVAMIX%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>¿Quieres una así?</a>
+    </div>
+    <p class="proto">Solo prototipo · <a href="index.html">Guía para probar</a> · <a href="panel.html">Panel de Jenny</a></p>
+  </div>
+  <div class="giant" aria-hidden="true">NOVAMIX</div>
+</footer>
+
+<a class="wafab" id="waFab" href="#" target="_blank" rel="noopener" aria-label="Escribir a Jenny por WhatsApp">
+  <span class="wa-label">Escríbele a Jenny</span>
+  <span class="wa-dot"><svg aria-hidden="true"><use href="#i-wa"/></svg></span>
+</a>
+
+<!-- ficha de producto -->
+<div class="layer" id="modal" aria-hidden="true">
+  <div class="scrim"></div>
+  <div class="sheet prod" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="xbtn" type="button" data-close aria-label="Cerrar">×</button>
+    <div class="m-grid">
+      <div class="gal">
+        <div class="gal-main" id="mArt"></div>
+        <div class="gal-th" id="mThumbs"></div>
+      </div>
+      <div class="m-info">
+        <p class="eyebrow" id="mCat"></p>
+        <h3 id="mTitle"></h3>
+        <p class="m-price" id="mPrice"></p>
+        <p class="muted pre" id="mDesc"></p>
+        <div class="m-tags" id="mTags"></div>
+        <div class="m-block" id="mOptBox" hidden>
+          <span class="lbl" id="mOptLbl">Elige una opción</span>
+          <div class="optgrid" id="mOpts" role="group" aria-labelledby="mOptLbl"></div>
+        </div>
+        <div class="m-block" id="mQtyBox">
+          <span class="lbl" id="mQtyLbl">Cantidad</span>
+          <div class="qty" role="group" aria-labelledby="mQtyLbl"><button type="button" id="mMinus" aria-label="Menos">−</button><output id="mQty">1</output><button type="button" id="mPlus" aria-label="Más">+</button></div>
+        </div>
+        <div class="m-block" id="mPayBox">
+          <span class="lbl">¿Cómo quieres pagar?</span>
+          <div class="pays" id="mPay" role="radiogroup" aria-label="Forma de pago"></div>
+        </div>
+        <p class="hint" id="mHint"></p>
+        <div class="bubble" id="mBubble" hidden>
+          <span class="lbl">Así le llega a <span class="ownerName">Jenny</span></span>
+          <pre id="mText"></pre>
+        </div>
+        <div class="m-actions">
+          <a class="btn wa" id="mWa" href="#" target="_blank" rel="noopener" aria-disabled="true"><svg aria-hidden="true"><use href="#i-wa"/></svg><span id="mWaLabel">Preguntar disponibilidad</span></a>
+          <button class="btn ghost" id="mAdd" type="button">Agregar a mi lista</button>
+          <button class="btn ghost cancel" type="button" data-close>Cancelar</button>
+        </div>
+        <p class="hint" id="mNoNum" hidden>Prototipo: falta poner el WhatsApp de Jenny en su panel. Mientras tanto WhatsApp te deja escoger el contacto.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- mi lista -->
+<div class="layer drawer" id="drawer" aria-hidden="true">
+  <div class="scrim"></div>
+  <aside class="panel" role="dialog" aria-modal="true" aria-labelledby="dTitle">
+    <div class="d-head"><h3 id="dTitle">Mi lista de regalos</h3><button class="xbtn static" type="button" data-close aria-label="Cerrar">×</button></div>
+    <div class="d-body">
+      <div id="dLines"></div>
+      <div id="dForm">
+        <div class="m-block"><span class="lbl">¿Cómo quieres pagar?</span><div class="pays" id="dPay" role="radiogroup" aria-label="Forma de pago"></div></div>
+        <div class="field"><label class="lbl" for="dName">Tu nombre (opcional)</label><input class="in" id="dName" autocomplete="name" placeholder="Ej. Laura Gómez" maxlength="40"></div>
+        <div class="sum" id="dSum"></div>
+        <div class="bubble" id="dBubble"><span class="lbl">Así le llega a <span class="ownerName">Jenny</span></span><pre id="dText"></pre></div>
+      </div>
+    </div>
+    <div class="d-foot" id="dFoot"></div>
+  </aside>
+</div>
+
+<!-- textos legales -->
+<div class="layer" id="legal" aria-hidden="true">
+  <div class="scrim"></div>
+  <div class="sheet legal-sheet" role="dialog" aria-modal="true" aria-labelledby="lTitle">
+    <button class="xbtn" type="button" data-close aria-label="Cerrar">×</button>
+    <div class="l-body"><h3 id="lTitle"></h3><div id="lText"></div></div>
+    <div class="l-foot"><button class="btn ghost" type="button" data-close>Cerrar</button></div>
+  </div>
+</div>
+
+<nav class="dock" aria-label="Menú rápido">
+  <a href="#top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Inicio</a>
+  <a href="#catalogo"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="2.500" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 9v11M3 13h18M12 9C10 4.500 6 5.500 7.500 8c.6 1 2.500 1 4.500 1zm0 0c2-4.500 6-3.500 4.500-1-.6 1-2.500 1-4.500 1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Regalos</a>
+  <a href="#navidad"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.200 6.200L21 10l-5 4 1.800 7L12 17l-5.800 4L8 14l-5-4 6.800-.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>Navidad</a>
+  <a class="dwa" id="dockWa" href="#" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+</nav>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol>
+</svg>
+
+<script src="core.js"></script>
+<script src="store.js"></script>
+<script>if ('serviceWorker' in navigator) { addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }</script>
+</body>
+</html>

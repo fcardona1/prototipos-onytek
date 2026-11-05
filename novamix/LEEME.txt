@@ -1,0 +1,3 @@
+NOVAMIX - PROTOTIPO (datos de prueba en el navegador)
+Carpeta "novamix" en prototipos-onytek (Vercel). Bienvenida: index.html. Tienda: store.html. Panel: panel.html (cualquier clave).
+Pendiente: WhatsApp de Jenny, fotos y precios reales, redes, revisar textos legales.

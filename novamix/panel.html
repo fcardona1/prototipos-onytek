@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Panel de NOVAMIX</title>
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="panel.css">
+<link rel="manifest" href="panel.webmanifest">
+<link rel="apple-touch-icon" href="img/app-192.png">
+<meta name="theme-color" content="#0D1B54">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.3-.15-1.263-.465-2.403-1.485-.888-.795-1.484-1.77-1.66-2.07-.174-.3-.019-.465.13-.615.136-.135.301-.345.451-.523.146-.181.194-.301.297-.496.1-.21.049-.375-.025-.524-.075-.15-.672-1.62-.922-2.206-.24-.584-.487-.51-.672-.51-.172-.015-.371-.015-.571-.015-.2 0-.523.074-.797.359-.273.3-1.045 1.02-1.045 2.475s1.07 2.865 1.219 3.075c.149.18 2.095 3.195 5.076 4.483.709.3 1.263.489 1.694.626.712.226 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></symbol></svg>
+
+<!-- ENTRADA -->
+<main id="login" class="login" hidden>
+  <form class="lcard" id="loginForm" autocomplete="off">
+    <img class="lmark" src="img/icono-circular.webp" alt="NOVAMIX" width="112" height="112">
+    <h1>Panel de NOVAMIX</h1>
+    <p class="muted">Aquí cargas y cambias tus productos. Es solo para ti.</p>
+    <label class="field"><span class="lbl">Usuario</span><input class="in" id="lUser" value="jenny" autocapitalize="none" autocomplete="username"></label>
+    <label class="field"><span class="lbl">Contraseña</span>
+      <span class="pw"><input class="in" id="lPass" type="password" autocomplete="current-password" placeholder="Escribe cualquier cosa"><button type="button" class="eye" id="eye" aria-label="Mostrar contraseña">👁</button></span></label>
+    <label class="chk"><input type="checkbox" id="lRem" checked> Recordarme en este equipo</label>
+    <button class="btn block" type="submit">Entrar</button>
+    <p class="hint">Es una prueba: la contraseña real se crea cuando la tienda quede en línea.</p>
+    <p class="hint"><a href="store.html">← Volver a la tienda</a></p>
+  </form>
+</main>
+
+<!-- PANEL -->
+<div id="app" hidden>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="store.html" aria-label="Ver la tienda"><img src="img/logo-horizontal.webp" alt="NOVAMIX" height="40"></a>
+      <nav class="tabs" id="tabs" aria-label="Secciones">
+        <button type="button" data-tab="home" aria-current="page">Resumen</button>
+        <button type="button" data-tab="prods">Productos</button>
+        <button type="button" data-tab="cats">Categorías</button>
+        <button type="button" data-tab="set">Ajustes</button>
+      </nav>
+      <div class="who"><span id="hello">Hola</span><a class="btn ghost small" href="store.html" target="_blank" rel="noopener">Ver tienda</a><button class="linkbtn" id="logout" type="button">Cerrar sesión</button></div>
+    </div>
+  </header>
+
+  <main class="wrap main">
+    <!-- Resumen -->
+    <section id="t-home" class="tab">
+      <h2 id="greet">Hola</h2>
+      <p class="muted">Esto es lo que hay en tu tienda ahora mismo.</p>
+      <div class="stats" id="stats"></div>
+      <div class="box" id="todo"></div>
+      <div class="box">
+        <h3>Últimas preguntas por WhatsApp</h3>
+        <p class="hint">Se guardan cuando un cliente toca “Preguntar disponibilidad” (solo en esta prueba).</p>
+        <ul class="asks" id="asks"></ul>
+      </div>
+    </section>
+
+    <!-- Productos -->
+    <section id="t-prods" class="tab" hidden>
+      <div class="head"><div><h2>Productos</h2><p class="muted" id="pcount"></p></div><button class="btn" id="newP" type="button">+ Agregar producto</button></div>
+      <div class="tools"><input class="in" id="pq" type="search" placeholder="Buscar producto" aria-label="Buscar producto"><button class="btn ghost small" id="delSamples" type="button" hidden>Borrar los ejemplos</button></div>
+      <div id="plist" class="plist"></div>
+    </section>
+
+    <!-- Categorías -->
+    <section id="t-cats" class="tab" hidden>
+      <h2>Categorías</h2><p class="muted">Sirven para que tus clientes encuentren rápido lo que buscan.</p>
+      <form class="inl" id="catForm"><input class="in" id="catName" placeholder="Nueva categoría, por ejemplo: Maquillaje" maxlength="40" aria-label="Nombre de la categoría"><button class="btn" type="submit">Agregar</button></form>
+      <p class="err" id="catErr" role="alert"></p>
+      <ul class="clist" id="clist"></ul>
+    </section>
+
+    <!-- Ajustes -->
+    <section id="t-set" class="tab" hidden>
+      <h2>Ajustes</h2><p class="muted">Lo que aparece en la tienda: tu WhatsApp, el aviso de arriba y más.</p>
+      <form id="setForm" class="box form">
+        <label class="field"><span class="lbl">Tu nombre</span><input class="in" id="sOwner" maxlength="30"></label>
+        <label class="field"><span class="lbl">Tu WhatsApp</span><input class="in" id="sWa" inputmode="tel" placeholder="Ejemplo: 300 123 4567"><span class="hint">Aquí le llegan las preguntas de tus clientes. Si no lo pones, el botón abre WhatsApp sin número.</span></label>
+        <label class="field"><span class="lbl">Aviso de arriba de la tienda</span><input class="in" id="sBanner" maxlength="90"></label>
+        <div class="two">
+          <label class="field"><span class="lbl">Porcentaje para separar</span><input class="in" id="sPct" type="number" min="10" max="90" step="5"><span class="hint">Hoy es el 50%.</span></label>
+          <label class="field"><span class="lbl">Fecha de Navidad (cuenta regresiva)</span><input class="in" id="sXmas" type="date"></label>
+        </div>
+        <label class="field"><span class="lbl">Frase de la tienda</span><input class="in" id="sSlogan" maxlength="60"></label>
+        <label class="field"><span class="lbl">Enlace de tu comunidad o grupo de WhatsApp</span><input class="in" id="sCom" placeholder="chat.whatsapp.com/..."></label>
+        <div class="two">
+          <label class="field"><span class="lbl">Instagram</span><input class="in" id="sIg" placeholder="instagram.com/tu_usuario"></label>
+          <label class="field"><span class="lbl">TikTok</span><input class="in" id="sTt" placeholder="tiktok.com/@tu_usuario"></label>
+        </div>
+        <label class="field"><span class="lbl">Facebook</span><input class="in" id="sFb" placeholder="facebook.com/tu_pagina"></label>
+        <div class="actions"><button class="btn" type="submit">Guardar ajustes</button><span class="ok" id="setOk" role="status"></span></div>
+      </form>
+      <div class="box">
+        <h3>Volver a empezar</h3>
+        <p class="muted">Borra lo que cargaste en esta prueba y deja otra vez los productos de ejemplo.</p>
+        <div id="resetBox"><button class="btn ghost small" id="resetAsk" type="button">Restaurar los ejemplos</button></div>
+      </div>
+    </section>
+
+    <div class="made">
+      <a class="made-logo" href="https://www.onytek.co" target="_blank" rel="noopener" aria-label="Onytek, abrir www.onytek.co"><img src="img/onytek.png" alt="Onytek" width="640" height="118" loading="lazy"></a>
+      <div class="made-txt"><small>Desarrollado por</small><b>Onytek</b><em>Tecnología con propósito, ejecución con precisión.</em></div>
+      <a class="made-cta" href="https://wa.me/573002072739?text=Hola%20Onytek%2C%20vi%20la%20tienda%20NOVAMIX%20y%20quiero%20una%20p%C3%A1gina%20as%C3%AD" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>¿Quieres una así?</a>
+    </div>
+  </main>
+
+  <nav class="bottom" id="bottom" aria-label="Secciones">
+    <button type="button" data-tab="home" aria-current="page"><b>⌂</b>Resumen</button>
+    <button type="button" data-tab="prods"><b>🎁</b>Productos</button>
+    <button type="button" data-tab="cats"><b>🏷</b>Categorías</button>
+    <button type="button" data-tab="set"><b>⚙</b>Ajustes</button>
+  </nav>
+  <button class="fab" id="fab" type="button" aria-label="Agregar producto">+</button>
+</div>
+
+<!-- Formulario de producto -->
+<div class="layer" id="pform" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="fTitle">
+  <div class="scrim"></div>
+  <form class="sheet fsheet" id="pf" novalidate>
+    <button type="button" class="xbtn" data-close aria-label="Cerrar">×</button>
+    <div class="fhead"><span class="fico" aria-hidden="true">🎁</span><div><h3 id="fTitle">Agregar producto</h3><p>Llena los bloques y mira abajo cómo queda en la tienda.</p></div></div>
+    <div class="fbody">
+      <section class="blk b-blue"><h4><i>1</i> Fotos</h4>
+        <div class="photos" id="photos"></div>
+        <span class="hint">Toca una foto para moverla y acercarla. La primera es la principal.</span></section>
+
+      <section class="blk b-gold"><h4><i>2</i> ¿Qué es?</h4>
+        <label class="field"><span class="lbl">Nombre del producto *</span><input class="in" id="fName" maxlength="90" placeholder="Ejemplo: Loción Aurora, 100 ml"></label>
+        <div class="two">
+          <label class="field"><span class="lbl">Categoría *</span><select class="in" id="fCat"></select></label>
+          <label class="field"><span class="lbl">Insignia</span><select class="in" id="fBadge"><option value="">Ninguna</option><option>Nuevo</option><option>Más vendido</option><option>Últimas unidades</option></select></label>
+        </div>
+        <label class="field"><span class="lbl">Descripción</span><textarea class="in" id="fDesc" maxlength="500" placeholder="Cuéntale al cliente por qué le va a gustar"></textarea></label></section>
+
+      <section class="blk b-red"><h4><i>3</i> Precio</h4>
+        <div class="two">
+          <label class="field"><span class="lbl">Precio *</span><input class="in" id="fPrice" inputmode="numeric" placeholder="Ejemplo: 45000"></label>
+          <label class="field"><span class="lbl">Precio anterior</span><input class="in" id="fOld" inputmode="numeric" placeholder="Si está en oferta"><span class="hint">La tienda calcula el % de descuento.</span></label>
+        </div></section>
+
+      <section class="blk b-green"><h4><i>4</i> Opciones del cliente</h4>
+        <div class="two">
+          <label class="field"><span class="lbl">¿Qué puede elegir?</span><input class="in" id="fOptLbl" maxlength="20" placeholder="Color, Aroma, Talla…"></label>
+          <label class="field"><span class="lbl">Opciones, separadas por coma</span><input class="in" id="fOpts" placeholder="Rojo, Azul, Verde"></label>
+        </div></section>
+
+      <section class="blk b-violet"><h4><i>5</i> Cómo se vende</h4>
+        <div class="sw">
+          <label><input type="checkbox" id="fAvail" checked><span>Disponible</span><small>Si lo apagas, aparece como agotado</small></label>
+          <label><input type="checkbox" id="fPart" checked><span>Se puede separar</span><small>Con el <span id="fPct">50</span>%</small></label>
+          <label><input type="checkbox" id="fXmas"><span>Para Navidad</span><small>Sale en el filtro de Navidad</small></label>
+          <label><input type="checkbox" id="fFeat"><span>Destacado</span><small>Aparece primero</small></label>
+          <label><input type="checkbox" id="fHide"><span>Ocultar de la tienda</span><small>No lo ve nadie, pero queda guardado</small></label>
+        </div></section>
+
+      <section class="prev" aria-live="polite"><h4>Así se verá en la tienda</h4><div id="prevCard"></div></section>
+      <p class="err" id="fErr" role="alert"></p>
+    </div>
+    <div class="ffoot"><button class="btn ghost" type="button" data-close>Cancelar</button><button class="btn" type="submit">Guardar producto</button></div>
+  </form>
+</div>
+
+<!-- Acomodar la foto -->
+<div class="layer top" id="frame" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="frTitle">
+  <div class="scrim"></div>
+  <div class="sheet frsheet">
+    <button type="button" class="xbtn" data-closeframe aria-label="Cerrar">×</button>
+    <div class="fbody">
+      <h3 id="frTitle">Acomoda tu foto</h3>
+      <p class="muted">Arrastra la foto con el dedo o el mouse. Así la verá el cliente.</p>
+      <div class="crop" id="crop" tabindex="0" aria-label="Zona de la foto: arrastra para moverla, o usa las flechas del teclado"><img id="cropImg" class="photo" alt="Tu foto" draggable="false"><span class="grid3" aria-hidden="true"></span></div>
+      <div class="zoomrow"><button class="sq" type="button" id="zMinus" aria-label="Alejar">−</button><input type="range" id="zoom" min="100" max="300" step="5" value="100" aria-label="Acercar"><button class="sq" type="button" id="zPlus" aria-label="Acercar">+</button></div>
+      <button class="linkbtn" type="button" id="frMain" hidden>Hacer esta foto la principal</button>
+      <div class="arrows" aria-label="Mover con botones"><button class="sq" type="button" data-nudge="0,-6" aria-label="Subir">↑</button><button class="sq" type="button" data-nudge="-6,0" aria-label="Izquierda">←</button><button class="sq" type="button" data-nudge="6,0" aria-label="Derecha">→</button><button class="sq" type="button" data-nudge="0,6" aria-label="Bajar">↓</button></div>
+    </div>
+    <div class="ffoot"><button class="btn ghost" type="button" data-closeframe>Cancelar</button><button class="btn ghost" type="button" id="frCenter">Centrar</button><button class="btn" type="button" id="frDone">Listo</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="core.js"></script>
+<script src="panel.js"></script>
+<script>if ('serviceWorker' in navigator) { addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); }); }</script>
+</body>
+</html>
