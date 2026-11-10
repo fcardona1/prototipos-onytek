@@ -1,0 +1,4 @@
+FOCUSTECH - PROTOTIPO tienda + panel + plataforma (datos de prueba en el navegador)
+Carpeta "focustech" en prototipos-onytek (Vercel). Todo en index.html. Rutas: #bienvenida, #tienda, #panel, #plataforma, #vendedor-laura.
+Cuentas de prueba: andres@focustech.co / focus2026 (dueno) | fabian@onytek.co / onytek2026 (admin) | laura@vendedor.co / laura2026 | carlos@vendedor.co / carlos2026 (vendedores)
+Pendiente: WhatsApp real de Andres, llaves de Wompi/Bold/Interrapidisimo, pixeles Meta/TikTok, base de datos (Supabase), textos legales, precio del plan Pro.
