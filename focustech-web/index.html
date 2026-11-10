@@ -2186,7 +2186,7 @@ async function ensureFresh(){
 }
 async function api(path,opt={}){
   await ensureFresh();
-  const r=await fetch(CFG.url+path,{...opt,headers:{apikey:CFG.key,Authorization:'Bearer '+(AUTH?AUTH.token:CFG.key),'Content-Type':'application/json',...(opt.headers||{})}});
+  const r=await fetch(CFG.url+path,{...opt,headers:{apikey:CFG.key,...(AUTH?{Authorization:'Bearer '+AUTH.token}:CFG.key.startsWith('eyJ')?{Authorization:'Bearer '+CFG.key}:{}),'Content-Type':'application/json',...(opt.headers||{})}});
   if(!r.ok){let t='';try{t=await r.text()}catch(_){}throw new Error(r.status+' '+t.slice(0,240))}
   const t=await r.text();if(!t)return null;try{return JSON.parse(t)}catch(_){return null}
 }
@@ -2300,7 +2300,7 @@ async function pollTick(){
   }catch(e){console.warn('poll',e)}
 }
 /* ---- acciones de la tienda ---- */
-function dbHit(k,id){if(AUTH)return;fetch(CFG.url+'/rest/v1/rpc/hit',{method:'POST',keepalive:true,headers:{apikey:CFG.key,Authorization:'Bearer '+CFG.key,'Content-Type':'application/json'},body:J({kind:k,pid:+id||0})}).catch(()=>{})}
+function dbHit(k,id){if(AUTH)return;fetch(CFG.url+'/rest/v1/rpc/hit',{method:'POST',keepalive:true,headers:{apikey:CFG.key,...(CFG.key.startsWith('eyJ')?{Authorization:'Bearer '+CFG.key}:{}),'Content-Type':'application/json'},body:J({kind:k,pid:+id||0})}).catch(()=>{})}
 function dbCita(c){const {id,...d}=c;rpc('add_cita',{c:d}).catch(e=>console.warn('cita',e))}
 function prodPlace(o,cb){
   modal('Registrando tu pedido',`<div class="proc">${nodeLoader()}<p>Estamos registrando tu pedido…</p></div>`);
