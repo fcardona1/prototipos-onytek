@@ -28,10 +28,24 @@ PASO 5 · Primer ingreso de Andrés
   En Integraciones > Redes sociales: usuario de Instagram/TikTok/Facebook y el WhatsApp de ventas (sin eso no aparece el botón de WhatsApp).
 
 AVISOS DE PEDIDOS
-  Ya funciona: campana en el panel, etiqueta "Nuevo", contador en la pestaña y aviso del navegador (botón "Activar avisos en este dispositivo" en Integraciones).
+  Ya funciona: campana en el panel, etiqueta "Nuevo", contador en la pestaña y aviso del navegador (botón "Activar avisos en este dispositivo" en Integraciones). Con la app cerrada: ver la sección siguiente.
   Correo y WhatsApp automáticos: se hacen con n8n. En n8n crea un flujo con nodo "Webhook" (POST), copia su URL y ejecuta en SQL:
      insert into config(k,v) values ('webhook_url','URL-DE-N8N') on conflict (k) do update set v = excluded.v;
   Cada pedido llega a n8n con el pedido completo y el texto listo (campo "msg"): conecta Zoho (correo) y, cuando Meta apruebe el número, WhatsApp Business.
+
+AVISOS AL CELULAR CON LA APP CERRADA (como una notificación de WhatsApp)
+  Ya está programado todo. Faltan 5 pasos de una sola vez, DESPUÉS del Paso 1 (Supabase creado y supabase.sql ejecutado):
+  A. Supabase > Edge Functions > Deploy a new function > nombre: push > pega el contenido de supabase/functions/push/index.ts > Deploy.
+     En esa función DESACTIVA "Verify JWT" (la protege una clave propia, paso B).
+  B. Supabase > Edge Functions > Secrets (Manage secrets) > agrega 3:  VAPID_PUBLIC, VAPID_PRIVATE y PUSH_SECRET
+     (los valores están en el archivo privado "claves-avisos-focustech.txt" que te entregó Claude; NO lo subas a GitHub).
+  C. SQL Editor: ejecuta las 2 líneas "PASO 4" del final de supabase.sql (cambia TU-PROYECTO por el de tu URL y pega la misma clave PUSH_SECRET).
+  D. En config.js ya está la llave pública (vapid). No la cambies.
+  E. Andrés abre la tienda en su celular, entra a /#panel > Integraciones > "Activar avisos en este dispositivo" > Permitir.
+     - Android (Chrome): funciona directo; mejor aún si la instala ("Instalar app" / "Agregar a pantalla de inicio").
+     - iPhone: primero Compartir > "Agregar a inicio", abrir la app desde ese ícono y ahí activar los avisos (iOS 16.4 o superior).
+     - Se puede activar en varios dispositivos (celular, computador, el de Fabian).
+  Prueba: haz un pedido de prueba desde otro navegador con el celular bloqueado: debe sonar/vibrar "Nuevo pedido #N · cliente · ciudad · total". Al tocarlo abre el panel.
 
 LO QUE TODAVÍA NO ESTÁ (siguiente fase)
   - Pago en línea con Wompi y Bold (necesita sus llaves y el webhook de confirmación). Mientras tanto la tienda ofrece Transferencia y Contra entrega en Cali.

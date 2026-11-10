@@ -178,6 +178,50 @@ end $$;
 drop trigger if exists notifs_webhook on public.notifs;
 create trigger notifs_webhook after insert on public.notifs for each row execute function public.notify_webhook();
 
+
+-- ---------- Avisos al celular con la app cerrada (Web Push) ----------
+create table if not exists public.push_subs (
+  endpoint text primary key,
+  sub jsonb not null,
+  uid uuid default auth.uid(),
+  created_at timestamptz not null default now()
+);
+alter table public.push_subs enable row level security;
+drop policy if exists push_subs_staff on public.push_subs;
+create policy push_subs_staff on public.push_subs for all using (public.is_staff()) with check (public.is_staff());
+
+-- Guarda el celular/computador de Andrés (o Fabian) para avisarle
+create or replace function public.save_push(s jsonb) returns void
+language plpgsql security definer set search_path = public as $$
+begin
+  if not public.is_staff() then raise exception 'no autorizado'; end if;
+  insert into push_subs(endpoint,sub,uid) values (s->>'endpoint', s, auth.uid())
+  on conflict (endpoint) do update set sub = excluded.sub, uid = excluded.uid;
+end $$;
+
+-- Cada pedido nuevo dispara el aviso (la función "push" de Supabase lo envía)
+create or replace function public.notify_push() returns trigger
+language plpgsql security definer set search_path = public, extensions as $$
+declare url text; sec text;
+begin
+  select v into url from config where k = 'push_url';
+  select v into sec from config where k = 'push_secret';
+  if url is not null and url <> '' then
+    begin
+      perform net.http_post(url := url,
+        headers := jsonb_build_object('Content-Type','application/json','x-push-secret',coalesce(sec,'')),
+        body := jsonb_build_object(
+          'title', case when (new.data->>'vend')::boolean then 'Pedido de vendedor #' else 'Nuevo pedido #' end || new.id,
+          'body', coalesce(new.data->>'cli','Cliente') || ' · ' || coalesce(new.data->>'city','') || ' · $' || to_char(coalesce((new.data->>'total')::numeric,0),'FM999G999G999'),
+          'id', new.id));
+    exception when others then null;
+    end;
+  end if;
+  return new;
+end $$;
+drop trigger if exists notifs_push on public.notifs;
+create trigger notifs_push after insert on public.notifs for each row execute function public.notify_push();
+
 -- ---------- Fotos y videos de productos ----------
 insert into storage.buckets (id, name, public) values ('productos','productos', true) on conflict (id) do nothing;
 drop policy if exists productos_read   on storage.objects;
@@ -200,3 +244,7 @@ create policy productos_delete on storage.objects for delete to authenticated us
 
 -- PASO 3 (cuando tengas el enlace de n8n para los avisos):
 -- insert into config(k,v) values ('webhook_url','https://TU-N8N/webhook/focustech-pedidos') on conflict (k) do update set v = excluded.v;
+
+-- PASO 4 (avisos al celular con la app cerrada; ver LEEME.txt, sección AVISOS AL CELULAR):
+-- insert into config(k,v) values ('push_url', 'https://TU-PROYECTO.supabase.co/functions/v1/push') on conflict (k) do update set v = excluded.v;
+-- insert into config(k,v) values ('push_secret', 'PEGA_AQUI_LA_CLAVE_DE_AVISOS') on conflict (k) do update set v = excluded.v;

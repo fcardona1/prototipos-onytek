@@ -2353,9 +2353,25 @@ function openGuia(id){
    <div class="fld"><label for="g-c">Transportadora</label><select id="g-c"><option>Interrapidísimo</option><option>Servientrega</option><option>Envía</option><option>Otra</option></select></div>
    <div class="fld"><label for="g-n">Número de guía</label><input id="g-n" type="text" required></div></form>`,{foot:'<button class="btn alt" data-act="close">Cancelar</button><button class="btn sig" type="submit" form="f-guia">Guardar guía</button>'});
 }
+const b64u=v=>{const p='='.repeat((4-v.length%4)%4),r=atob((v+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
+/* Avisos al celular aunque la app esté cerrada (Web Push). Guarda este dispositivo en Supabase. */
+async function pushSub(quiet){
+  if(!CFG.vapid||!('serviceWorker' in navigator)||!('PushManager' in window)||!isStaff())return false;
+  try{
+    const reg=await navigator.serviceWorker.ready;
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:b64u(CFG.vapid)});
+    await rpc('save_push',{s:sub.toJSON()});return true
+  }catch(e){console.error(e);if(!quiet)toast('No se pudo activar el aviso en este dispositivo');return false}
+}
 function askPush(){
-  if(!('Notification' in window)){toast('Este navegador no permite avisos');return}
-  Notification.requestPermission().then(p=>toast(p==='granted'?'Listo: te avisaremos cuando llegue un pedido (con la app abierta)':'No se activaron los avisos'))
+  if(!('Notification' in window)||!('serviceWorker' in navigator)||!('PushManager' in window)){
+    toast(/iphone|ipad/i.test(navigator.userAgent)?'En iPhone: primero toca Compartir > "Agregar a inicio" y abre la app desde ahí':'Este navegador no permite avisos');return}
+  Notification.requestPermission().then(async p=>{
+    if(p!=='granted'){toast('No se activaron los avisos. Revisa los permisos del navegador');return}
+    const ok=await pushSub();
+    toast(ok?'Listo: te llegará un aviso al celular con cada pedido, aunque la app esté cerrada':'Avisos activos con la app abierta. Falta conectar el envío al celular (ver LEEME)')
+  })
 }
 /* ---- arranque ---- */
 async function boot(){
@@ -2367,7 +2383,11 @@ async function boot(){
   catch(e){console.error(e);$('#v-shop').innerHTML='<div class="wrap" style="padding:80px 20px;text-align:center"><h2>Estamos teniendo un problema de conexión</h2><p style="margin:10px 0 18px">Revisa tu internet e inténtalo de nuevo.</p><button class="btn sig" onclick="location.reload()">Reintentar</button></div>';$('#v-shop').classList.add('on');return}
   route();
   setInterval(syncTick,3000);setInterval(pollTick,15000);
-  if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('sw.js').catch(()=>{});
+    navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.t==='resub')pushSub(true)});
+    if(AUTH&&'Notification' in window&&Notification.permission==='granted')pushSub(true)  /* renueva el registro del dispositivo en silencio */
+  }
 }
 boot();
 
