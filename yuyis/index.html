@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#C23B3B">
+<title>Dímelo, Capillo · Prototipo Yuyis Diseños</title>
+<link rel="icon" href="img/app-192.png"><link rel="apple-touch-icon" href="img/app-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@400;500;600&family=Pinyon+Script&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+<style>
+:root{--red:#C23B3B;--wine:#6B1D29;--deep:#3F0E17;--cream:#FDF3E1;--paper:#FFFAF0;--blush:#F8DDD6;--rose:#EBB5B0;--gold:#C9A24B;--ink:#2A1217;--display:"DM Serif Display",Georgia,serif,"Noto Color Emoji";--script:"Pinyon Script",cursive;--sans:"Jost",system-ui,"Segoe UI",sans-serif,"Noto Color Emoji"}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);line-height:1.6;min-height:100dvh;overflow-x:hidden;background:radial-gradient(circle at 85% 0,rgba(235,181,176,.55),transparent 50%),radial-gradient(circle at 0 70%,rgba(201,162,75,.18),transparent 45%),var(--cream);padding:0 max(16px,env(safe-area-inset-right)) 3rem max(16px,env(safe-area-inset-left))}
+.wrap{max-width:640px;margin:0 auto;display:flex;flex-direction:column;gap:1.8rem;padding-top:max(1.4rem,env(safe-area-inset-top))}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.top img{height:44px;width:auto}
+.tag{background:var(--wine);color:#FFE3A3;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .8rem;border-radius:999px;white-space:nowrap}
+.hero{text-align:center;position:relative;padding-top:.4rem}
+.hero .iso{width:112px;height:112px;margin:0 auto .6rem;border-radius:50%;border:3px solid var(--gold);box-shadow:0 0 0 6px var(--cream),0 0 0 8px rgba(201,162,75,.6),0 18px 30px -12px rgba(107,29,41,.5);animation:bob 4s ease-in-out infinite;background:var(--cream)}
+@keyframes bob{50%{transform:translateY(-6px) rotate(-2deg)}}
+.hero .script{font-family:var(--script);color:var(--red);font-size:2rem;display:block;margin-top:.8rem}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2.6rem,12vw,4rem);line-height:1;color:var(--wine);margin-top:.1rem}
+h1 em{color:var(--red)}
+.heart{position:absolute;font-size:1.3rem;opacity:0;animation:rise 6s ease-in infinite}
+@keyframes rise{0%{transform:translateY(20px);opacity:0}15%{opacity:.9}100%{transform:translateY(-90px) rotate(15deg);opacity:0}}
+.letter{position:relative;background:var(--paper);border:1px solid rgba(201,162,75,.7);padding:1.6rem 1.3rem 1.3rem;box-shadow:7px 7px 0 var(--rose);transform:rotate(-.6deg)}
+.letter::before{content:"";position:absolute;left:50%;top:-13px;width:104px;height:26px;transform:translateX(-50%) rotate(2deg);background:rgba(201,162,75,.55)}
+.letter p{font-size:1.06rem;color:#3a2228;margin-bottom:.95rem}
+.letter p b{color:var(--wine);font-weight:600}
+.letter .big{font-family:var(--display);font-size:1.55rem;line-height:1.15;color:var(--wine);margin-bottom:.9rem}
+.sign{font-family:var(--script);font-size:2.2rem;color:var(--red);line-height:1;margin-top:.3rem}
+.sign small{display:block;font-family:var(--sans);font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:#8a6a70;margin-top:.3rem}
+.doors{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+.door{position:relative;background:#fff;border:1px dashed var(--gold);padding:1.1rem 1.1rem 1.2rem;border-radius:18px;display:flex;flex-direction:column;gap:.5rem}
+.door h2{font-family:var(--display);font-weight:400;font-size:1.6rem;color:var(--wine);line-height:1.05}
+.door p{font-size:.96rem;color:#523038}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:.4rem;text-decoration:none;background:var(--red);color:#fff;border-radius:999px;padding:.85rem 1.2rem;font-weight:500;letter-spacing:.03em;margin-top:.3rem;box-shadow:0 10px 18px -10px rgba(194,59,59,.9);transition:transform .2s}
+.btn:active{transform:scale(.97)}.btn.wine{background:var(--wine)}
+.sec{background:rgba(255,255,255,.7);border:1px solid rgba(201,162,75,.5);border-radius:18px;padding:1.2rem}
+.sec h3{font-family:var(--display);font-weight:400;font-size:1.4rem;color:var(--wine);margin-bottom:.6rem}
+.sec ul{list-style:none;display:grid;gap:.5rem}
+.sec li{display:flex;gap:.6rem;align-items:flex-start;font-size:.97rem}
+.sec li label{display:flex;gap:.6rem;align-items:flex-start;cursor:pointer}
+.sec li input{margin-top:.28rem;accent-color:var(--red);width:18px;height:18px;flex:none}
+.sec li::before{content:"✦";color:var(--gold);flex:none}.sec li:has(label)::before{content:none}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+.hint{font-size:.85rem;color:#8a6a70;margin-top:.7rem}
+.foot{display:flex;flex-direction:column;align-items:center;gap:.6rem;margin-top:.4rem;text-align:center}
+.by{display:inline-flex;align-items:center;gap:.7rem;text-decoration:none;padding:.4rem .9rem .4rem 1rem;border:1px solid rgba(201,162,75,.7);border-radius:999px;background:var(--deep);color:#E8CFC9;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase}
+.by img{height:20px;width:auto}
+.foot small{font-size:.78rem;color:#8a6a70}
+@media (min-width:640px){.doors,.two{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (prefers-reduced-motion:reduce){.hero .iso,.heart{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img src="img/horizontal-recortado.png" alt="Yuyis Diseños · Estilo con alma de mujer"><span class="tag">Prototipo</span></div>
+
+  <header class="hero">
+    <span class="heart" style="left:12%;bottom:30%">💗</span><span class="heart" style="right:14%;bottom:40%;animation-delay:-2s">✨</span><span class="heart" style="left:30%;bottom:10%;animation-delay:-4s">🎀</span>
+    <img class="iso" src="img/isotipo-redondeado.png" alt="">
+    <span class="script">Con todo mi cariño</span>
+    <h1>Dímelo, <em>Capillo</em> 💗</h1>
+  </header>
+
+  <section class="letter" aria-label="Mensaje de Fabian">
+    <p class="big">Primero que todo, perdóname.</p>
+    <p>Sé que te hice esperar más de lo que yo quería, y aun así seguiste ahí, confiando. <b>Gracias por creer en mí.</b> De verdad, eso vale más que cualquier proyecto.</p>
+    <p>Esta tienda está hecha <b>con mucho amor</b>. Cada detalle, las capitales, el pasaporte, los sellos, lo pensé para Yuyis: zapatos hechos en Cali, con alma de mujer, hechos a la medida de quien los lleva.</p>
+    <p>Ojalá la sientas tuya desde el primer vistazo. Tócala, pruébala y dime sin miedo qué cambiarías: estoy aquí para dejarla perfecta.</p>
+    <div class="sign">Fabian<small>Onytek · Tecnología con propósito</small></div>
+  </section>
+
+  <div class="doors">
+    <div class="door"><h2>👠 La tienda</h2><p>Así la ven tus clientas. Elige un par, mira sus fotos y agrégalo a la bolsa.</p><a class="btn" href="tienda.html">Ver la tienda</a></div>
+    <div class="door"><h2>🔑 Tu panel</h2><p>Aquí ves tus pedidos, tus cifras y administras los productos. Entra con cualquier correo y clave.</p><a class="btn wine" href="panel.html">Entrar a mi panel</a></div>
+  </div>
+
+  <section class="sec">
+    <h3>Pruébala en 5 pasos</h3>
+    <ul>
+      <li><label><input type="checkbox"> Abre la tienda desde tu celular y toca un par</label></li>
+      <li><label><input type="checkbox"> Toca la foto para ampliarla y ver los detalles</label></li>
+      <li><label><input type="checkbox"> Elige una talla y agrégalo a la bolsa</label></li>
+      <li><label><input type="checkbox"> Toca ☰ y recorre el menú y las categorías</label></li>
+      <li><label><input type="checkbox"> Entra al panel y mira cómo llegan los pedidos</label></li>
+    </ul>
+    <p class="hint">Todo lo que hagas queda guardado solo en tu celular o computador, porque es una prueba.</p>
+  </section>
+
+  <div class="two">
+    <section class="sec"><h3>Es de ejemplo</h3><ul><li>Los nombres de los modelos y los precios</li><li>Los usuarios de Instagram y Facebook</li><li>Los textos legales (son borradores)</li></ul></section>
+    <section class="sec"><h3>Lo que necesito de ti</h3><ul><li>Las fotos finales de cada modelo</li><li>Precios y nombres reales</li><li>El valor del domicilio en Cali</li></ul></section>
+  </div>
+
+  <footer class="foot">
+    <a class="by" href="https://onytek.co" target="_blank" rel="noopener" aria-label="Desarrollado por Onytek"><span>Desarrollado por</span><img src="img/onytek.png" alt="Onytek"></a>
+    <small>Tecnología con propósito, ejecución con precisión.</small>
+    <small>© 2026 Yuyis Diseños · Prototipo de prueba</small>
+  </footer>
+</div>
+</body>
+</html>

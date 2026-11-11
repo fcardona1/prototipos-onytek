@@ -1,0 +1,3 @@
+YUYIS DISEÑOS - PROTOTIPO (datos de prueba en el navegador)
+Carpeta "yuyis" en prototipos-onytek (Vercel). Bienvenida: index.html. Tienda: tienda.html. Panel: panel.html (cualquier correo y clave).
+Pendiente del cliente: fotos finales, nombres y precios reales, redes reales, domicilio en Cali, revisar textos legales.
