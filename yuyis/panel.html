@@ -432,6 +432,72 @@ body.in{overflow-x:hidden}
  .tbl th,.tbl td{padding-left:.4rem;padding-right:.4rem}
  #v-cupones .tbl{table-layout:fixed}#v-cupones .tbl th{font-size:.6rem;letter-spacing:.06em;white-space:nowrap}#v-cupones .tbl th:first-child{width:48%}#v-cupones .tbl th:nth-child(2){width:29%}#v-cupones .tbl .code{font-size:.72rem;letter-spacing:0;white-space:nowrap;padding:.15rem .45rem}
 }
+
+/* ---------- v3.4 categorías + móvil compacto ---------- */
+.catbar{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.3rem}
+.ct{position:relative;width:104px;display:flex;flex-direction:column;align-items:center;gap:.3rem;text-align:center;background:none;border:0;padding:0;color:var(--wine);min-width:0}
+.ct .cp{width:76px;height:76px;border-radius:50%;padding:3px;background:conic-gradient(from 210deg,#E9D08A,var(--gold),#F3E2B0,var(--gold),#E9D08A);display:grid;place-items:center;transition:.3s}
+.ct .cp img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2.5px solid var(--cream)}
+.ct .cp i{font-style:normal;font-size:1.7rem;width:100%;height:100%;border-radius:50%;background:var(--blush);display:grid;place-items:center;border:2.5px solid var(--cream)}
+.ct.on .cp{background:linear-gradient(140deg,var(--red),var(--wine));transform:scale(1.06)}
+.ct.off{opacity:.55}
+.ct.add .cp{background:none;border:2px dashed var(--gold)}.ct.add .cp i{background:transparent;border:0;color:var(--red);font-size:2rem}
+.ct b{font-family:var(--display);font-weight:400;font-size:.98rem;line-height:1.1;min-height:2.2em;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere;max-width:100%}
+.ct small{font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.ct .ed{position:absolute;top:-4px;right:2px;background:var(--gold);color:var(--deep);font-size:.6rem;letter-spacing:.04em;padding:.15rem .45rem;border-radius:999px;white-space:nowrap}
+.cvr{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:.5rem}
+.cvr button{aspect-ratio:1;border-radius:50%;padding:2px;border:2px solid transparent;background:none}.cvr button.on{border-color:var(--red)}.cvr img{width:100%;height:100%;border-radius:50%;object-fit:cover}
+.prod .rs.c2{color:var(--red);font-size:.8rem}
+.ic2{display:none}
+#sheet .row2{display:flex;gap:.6rem;flex-wrap:wrap}
+@media (max-width:980px){
+  #v-productos{padding-left:12px;padding-right:12px}
+  #v-productos>.hd{display:flex;align-items:center;justify-content:space-between;gap:.6rem;margin-bottom:.7rem}
+  #v-productos>.hd{flex-wrap:nowrap}#v-productos>.hd>div{min-width:0;flex:1}#v-productos>.hd h3{display:none}#v-productos>.hd .lbl{font-size:.68rem;letter-spacing:.08em;line-height:1.35;display:block}
+  #newP{width:44px;height:44px;padding:0;border-radius:50%;display:grid;place-items:center}#newP .tx{display:none}#newP .ic2{display:block;font-size:1.4rem;line-height:1}
+  .catbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.3rem;margin-bottom:.9rem}
+  .ct{width:auto}.ct .cp{width:min(62px,16vw);height:min(62px,16vw)}.ct b{font-size:.8rem}.ct small{font-size:.56rem;letter-spacing:.03em}
+  .pgrid{grid-template-columns:minmax(0,1fr);gap:.55rem}
+  .prod{display:grid;grid-template-columns:68px minmax(0,1fr);gap:.75rem;align-items:center;padding:8px;box-shadow:none}
+  .prod .ph{width:68px;height:68px;aspect-ratio:auto}
+  .prod .in{padding:0;display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:.5rem;align-items:center}
+  .prod h4{font-size:1.1rem;grid-column:1}.prod .rs{font-size:.8rem;grid-column:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prod .acts{grid-column:2;grid-row:1/4;margin:0;flex-direction:column;align-self:stretch;justify-content:center;gap:.3rem}
+  .prod .acts .btn{min-height:34px;padding:.3rem .7rem;font-size:.74rem}
+  .prod .rs.c2{display:none}
+}
+
+/* ---------- v3.4 · móvil compacto en todos los módulos ---------- */
+@media (max-width:980px){
+  .top{padding:.45rem 12px;padding-top:calc(.45rem + env(safe-area-inset-top,0px));gap:.5rem}.top h1{font-size:1.4rem}
+  #simBtn{width:42px;height:42px;padding:0;border-radius:50%;display:grid;place-items:center;font-size:1.05rem}#simBtn .lg2,#simBtn .sm2{display:none}
+  .view{padding:.7rem 12px 6.5rem}
+  .card{box-shadow:none;padding:.8rem .85rem;border-radius:12px}
+  .grid{gap:.6rem}.view .g2,.view>.card,.view>.hd{margin-top:.7rem!important}.view>.hd:first-child{margin-top:0!important}
+  .hd{margin-bottom:.5rem;gap:.5rem}.hd h3{font-size:1.2rem}
+  .hello{margin-bottom:.5rem}.hello .script{display:none}.hello h2{font-size:1.55rem}
+  .view .script{font-size:1.15rem}.view h2{font-size:1.55rem}
+  .alert{padding:.65rem .8rem;gap:.55rem;box-shadow:none;margin-bottom:.7rem;border-radius:12px}.alert>span{font-size:1.4rem}.alert>div{flex:1;min-width:0;font-size:.8rem;line-height:1.3}.alert b{font-size:1.1rem}.alert .btn{margin-left:0;width:100%;padding:.55rem;min-height:40px}
+  .seg button{min-height:36px}
+  #kpis{gap:.5rem}.kpi{padding:.6rem .7rem}.kpi .ic{display:none}.kpi .lbl{padding-right:0;min-height:0;font-size:.6rem}.kpi .v{font-size:clamp(1.25rem,5.6vw,1.55rem)}.kpi .d{font-size:.68rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .st div{min-height:3.6rem;padding:.4rem .15rem}
+  .chips{flex-wrap:nowrap;overflow-x:auto;gap:.4rem;margin:0 -12px .6rem;padding:0 12px;scrollbar-width:none;overscroll-behavior-x:contain}.chips::-webkit-scrollbar{display:none}
+  .chips button{flex:none;white-space:nowrap;padding:.4rem .8rem;font-size:.82rem;min-height:38px}
+  .order{grid-template-columns:40px minmax(0,1fr) auto;gap:.6rem;align-items:center;padding:.6rem .7rem;margin-bottom:.45rem;box-shadow:none}
+  .order:hover{transform:none;box-shadow:none}
+  .order .stamp{width:40px;height:40px;font-size:1rem}
+  .order .rr{grid-column:auto;text-align:right;font-size:1rem;white-space:nowrap}.order .rr .rs{display:none}
+  .order .rt{font-size:.98rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .order .rs{font-size:.76rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .order .meta{margin-top:.2rem;flex-wrap:nowrap;overflow:hidden}.order .meta .badge{white-space:nowrap;font-size:.64rem;padding:.15rem .5rem}.order .meta .badge:nth-child(n+3){display:none}
+  .order .steps{margin-top:.4rem}.order .steps i{height:4px}
+  .fld{margin-bottom:.5rem}.fld input,.fld select,.fld textarea{padding:.6rem .8rem;min-height:44px}
+  .ready{grid-template-columns:64px minmax(0,1fr)!important;gap:.8rem!important;text-align:left!important;padding:.8rem!important;box-shadow:none}
+  .ring{width:64px;height:64px;font-size:1.15rem}.ring::before{inset:6px}.ready h3{font-size:1.2rem}.ready p{font-size:.78rem}
+  .igrid{grid-template-columns:minmax(0,1fr);gap:.6rem}.int{gap:.5rem}.int:hover{transform:none;box-shadow:none}
+  .igrp{margin:1rem 0 .4rem}
+  .rgrid{gap:.6rem}
+}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -512,7 +578,7 @@ body.in{overflow-x:hidden}
           <button type="button" class="fp" id="mfp" aria-label="Entrar con huella"><svg viewBox="0 0 32 32"><path d="M8 13a8 8 0 0 1 16 0M11 27c1-2 1-5 1-7a4 4 0 0 1 8 0c0 3 0 6 2 8M6 18c0-2 0-3 1-5M16 12a5 5 0 0 0-5 5c0 4-1 6-2 8M16 20c0 3 1 5 2 7M24 17c0 3 0 6 1 9"/></svg></button>
         </div>
         <div class="m-ft"><div class="bc"><svg id="mbar" viewBox="0 0 200 46" preserveAspectRatio="none"></svg></div><a class="by2" href="https://onytek.co" target="_blank" rel="noopener" aria-label="Desarrollado por Onytek"><span>Desarrollado por</span><img src="img/onytek.png" alt="Onytek"></a></div>
-        <div class="m-dm">PROTOTIPO · PANEL v3.3 · entra con cualquier correo y contraseña</div>
+        <div class="m-dm">PROTOTIPO · PANEL v3.5 · entra con cualquier correo y contraseña</div>
       </div>
       <div class="m-apv" id="mapv">BIENVENIDA</div>
     </form>
@@ -556,7 +622,8 @@ body.in{overflow-x:hidden}
 
     <!-- PRODUCTOS -->
     <section class="view" id="v-productos">
-      <div class="hd"><div><h3 style="font-size:1.9rem">Tus destinos</h3><span class="lbl" id="pcount"></span></div><button class="btn red" id="newP">＋ Nuevo producto</button></div>
+      <div class="hd"><div><h3 style="font-size:1.9rem">Tu catálogo</h3><span class="lbl" id="pcount"></span></div><button class="btn red" id="newP" aria-label="Nuevo producto"><span class="tx">＋ Nuevo producto</span><span class="ic2">＋</span></button></div>
+      <div class="catbar" id="catbar"></div>
       <div class="pgrid" id="pgrid"></div>
     </section>
 
@@ -645,7 +712,7 @@ body.in{overflow-x:hidden}
 </div>
 
 <nav class="bn" id="bn"></nav>
-<div class="proto"><b>PROTOTIPO · PANEL v3.3</b> · Onytek · datos de ejemplo</div>
+<div class="proto"><b>PROTOTIPO · PANEL v3.5</b> · Onytek · datos de ejemplo</div>
 
 <div class="ov" id="ov"></div>
 <aside class="sheet" id="sheet"></aside>
@@ -672,6 +739,11 @@ let products=[
  {id:"kingston",n:"Kingston",f:"🇯🇲",t:"Slingback",p:119000,img:"m17",hid:false,views:344,sold:7},
  {id:"dublin",n:"Dublín",f:"🇮🇪",t:"Sandalias",p:129000,img:"m18",hid:false,views:205,sold:2}
 ];
+const TYPE_CAT={Bailarinas:"baletas",Dorsay:"baletas",Slingback:"baletas",Mocasines:"baletas",Sandalias:"baletas",Cuña:"plataformas",Plataformas:"plataformas"};
+let cats=[{id:"baletas",n:"Baletas & Sandalias",img:"m03",vis:true},{id:"plataformas",n:"Plataformas",img:"m09",vis:true}];
+products.forEach(p=>{p.cat=TYPE_CAT[p.t]||"baletas"});
+let selCat="all";
+const catN=id=>(cats.find(c=>c.id===id)||{n:"Sin categoría"}).n;
 const byId=id=>products.find(p=>p.id===id);
 const STATES=[["nuevo","Nuevo","b-nuevo"],["prod","En producción","b-prod"],["listo","Listo","b-listo"],["env","Enviado","b-env"],["ent","Entregado","b-ent"]];
 const sOf=k=>STATES.find(s=>s[0]===k);
@@ -899,10 +971,46 @@ function openOrder(id){
 }
 function refresh(){drawNav();render()}
 function rProductos(){
-  $("#pcount").textContent=products.length+" modelos · "+products.filter(p=>!p.hid).length+" visibles";
-  $("#pgrid").innerHTML=products.map((p,i)=>`<div class="card prod ${p.hid?"hid":""}"><div class="ph"><img src="img/${p.img}.jpg" alt="${p.n}">${p.hid?'<span class="badge">Oculto</span>':""}</div><div class="in"><h4>${p.n} ${p.f}</h4><div class="rs">${p.t} · ${COP(p.p)}</div><div class="rs">👁 ${p.views} · 🛍 ${p.sold}</div><div class="acts"><button class="btn line sm" data-e="${i}">Editar</button><button class="btn ghost sm" data-h="${i}">${p.hid?"Mostrar":"Ocultar"}</button></div></div></div>`).join("");
+  $("#pcount").textContent=products.length+" modelos · "+products.filter(p=>!p.hid).length+" visibles · "+cats.length+" categorías";
+  const cb=$("#catbar");cb.innerHTML="";
+  const tile=(id,n,img,count,extra)=>{const b=el("button","ct"+(selCat===id?" on":"")+(extra||""),`<span class="cp">${img?`<img src="img/${img}.jpg" alt="">`:`<i>${id==="new"?"＋":"👠"}</i>`}</span><b>${n}</b><small>${count}</small>`);return b};
+  const all=tile("all","Todos",null,products.length+" pares");all.onclick=()=>{selCat="all";rProductos()};cb.appendChild(all);
+  cats.forEach((c,k)=>{const n=products.filter(p=>p.cat===c.id).length;const b=tile(c.id,c.n,c.img,n+(n===1?" par":" pares")+(c.vis?"":" · oculta"),c.vis?"":" off");
+    b.onclick=()=>{if(selCat===c.id)editCat(k);else{selCat=c.id;rProductos()}};
+    if(selCat===c.id)b.insertAdjacentHTML("beforeend",'<span class="ed">✎ Editar</span>');cb.appendChild(b)});
+  const nw=tile("new","Nueva categoría",null,"crear","  add");nw.onclick=()=>editCat(null);cb.appendChild(nw);
+  const list=products.map((p,i)=>[p,i]).filter(([p])=>selCat==="all"||p.cat===selCat);
+  $("#pgrid").innerHTML=list.length?list.map(([p,i])=>`<div class="card prod ${p.hid?"hid":""}"><div class="ph"><img src="img/${p.img}.jpg" alt="${p.n}">${p.hid?'<span class="badge">Oculto</span>':""}</div><div class="in"><h4>${p.n} ${p.f}</h4><div class="rs">${p.t} · ${COP(p.p)}</div><div class="rs c2">${catN(p.cat)}</div><div class="rs">👁 ${p.views} · 🛍 ${p.sold}</div><div class="acts"><button class="btn line sm" data-e="${i}">Editar</button><button class="btn ghost sm" data-h="${i}">${p.hid?"Mostrar":"Ocultar"}</button></div></div></div>`).join(""):'<div class="card" style="grid-column:1/-1;text-align:center;padding:2rem"><div class="script" style="font-size:1.6rem">Aquí aún no hay pares</div><div class="rs">Crea un producto y elígele esta categoría 💗</div></div>';
   $$("[data-h]").forEach(b=>b.onclick=()=>{const p=products[+b.dataset.h];p.hid=!p.hid;toast(p.n+(p.hid?" ahora está oculto":" ahora es visible"));rProductos()});
   $$("[data-e]").forEach(b=>b.onclick=()=>editProd(+b.dataset.e));
+}
+function editCat(k){
+  const isNew=k==null,c=isNew?{id:"",n:"",img:null,vis:true}:{...cats[k]};
+  const draw=()=>{
+  const mine=products.filter(p=>p.cat===c.id);
+  openSheet(`<div class="script" style="font-size:1.6rem">${isNew?"Nueva categoría":"Editar categoría"}</div><h2>${isNew?"Crear categoría":c.n}</h2>
+   <div class="fld"><label class="lbl">Nombre de la categoría</label><input id="cn2" value="${c.n}" maxlength="28" placeholder="Ej. Tacones, Botas, Sandalias…"></div>
+   <div class="fld"><label class="lbl">Foto de portada</label>${mine.length?`<div class="cvr">${mine.map(p=>`<button type="button" data-cv="${p.img}" class="${c.img===p.img?"on":""}"><img src="img/${p.img}.jpg" alt="${p.n}"></button>`).join("")}</div>`:'<div class="rs">Cuando tenga pares, podrás elegir la foto de portada entre ellos.</div>'}</div>
+   <div class="tgl" style="margin:.4rem 0 .8rem"><span>Visible en la tienda</span><button class="sw ${c.vis?"on":""}" id="cvis" aria-label="Visible"></button></div>
+   ${isNew?"":`<div class="fld"><label class="lbl">Orden en el catálogo</label><div class="row2"><button class="btn line sm" id="mvl" ${k===0?"disabled":""}>◀ Antes</button><button class="btn line sm" id="mvr" ${k===cats.length-1?"disabled":""}>Después ▶</button></div></div>`}
+   <div style="display:flex;gap:.6rem;margin-top:.8rem"><button class="btn red" id="csv">${isNew?"Crear categoría":"Guardar"}</button><button class="btn line" id="ccn">Cancelar</button></div>
+   ${isNew?"":`<button class="btn ghost sm" id="cdel" style="margin-top:.8rem;color:var(--red)">🗑 Eliminar categoría</button>`}`);
+  $$("[data-cv]").forEach(b=>b.onclick=()=>{c.n=$("#cn2").value;c.img=b.dataset.cv;draw()});
+  $("#cvis").onclick=()=>{c.n=$("#cn2").value;c.vis=!c.vis;draw()};
+  $("#ccn").onclick=closeSheet;
+  const mv=d=>()=>{c.n=$("#cn2").value;cats[k]={...cats[k],n:c.n.trim()||cats[k].n,img:c.img,vis:c.vis};const t=cats[k];cats[k]=cats[k+d];cats[k+d]=t;toast("Orden actualizado");closeSheet();rProductos()};
+  if(!isNew){$("#mvl").onclick=mv(-1);$("#mvr").onclick=mv(1)}
+  $("#csv").onclick=()=>{const nm=$("#cn2").value.trim();if(!nm){toast("Escribe el nombre de la categoría");return}
+    if(cats.some((x,j)=>j!==k&&x.n.toLowerCase()===nm.toLowerCase())){toast("Ya existe «"+nm+"»");return}
+    if(isNew){const id=nm.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"cat"+Date.now();cats.push({id,n:nm,img:null,vis:c.vis});selCat=id;toast("🎉 Categoría «"+nm+"» creada")}
+    else{cats[k]={...cats[k],n:nm,img:c.img,vis:c.vis};toast("✓ Categoría guardada")}
+    closeSheet();rProductos()};
+  const dl=$("#cdel");if(dl)dl.onclick=()=>{
+    if(cats.length<2){toast("Debe quedar al menos una categoría");return}
+    const dest=cats.find((x,j)=>j!==k),n=mine.length;
+    openSheet(`<div class="script" style="font-size:1.6rem">¿Eliminar categoría?</div><h2>${c.n}</h2><div class="note">${n?`Sus ${n} ${n===1?"par pasará":"pares pasarán"} a «${dest.n}». `:""}Los productos no se borran.</div><div style="display:flex;gap:.6rem;margin-top:.8rem"><button class="btn red" id="cok">Sí, eliminar</button><button class="btn line" id="cno">Cancelar</button></div>`);
+    $("#cno").onclick=closeSheet;$("#cok").onclick=()=>{products.forEach(p=>{if(p.cat===c.id)p.cat=dest.id});cats.splice(k,1);selCat="all";closeSheet();toast("Categoría eliminada");rProductos()}};
+  };draw();
 }
 /* ---- sugeridor de nombres: capitales con bandera ---- */
 const CAP={Europa:[["Londres","🇬🇧"],["Madrid","🇪🇸"],["Lisboa","🇵🇹"],["Berlín","🇩🇪"],["Viena","🇦🇹"],["Praga","🇨🇿"],["Atenas","🇬🇷"],["Varsovia","🇵🇱"],["Budapest","🇭🇺"],["Estocolmo","🇸🇪"],["Copenhague","🇩🇰"],["Helsinki","🇫🇮"],["Roma","🇮🇹"],["París","🇫🇷"],["Bruselas","🇧🇪"],["Oslo","🇳🇴"],["Dublín","🇮🇪"],["Ámsterdam","🇳🇱"],["Berna","🇨🇭"]],
@@ -922,12 +1030,13 @@ function editProd(i){
   const isNew=i==null,p=isNew?{n:"",f:"",t:"Bailarinas",p:105000,img:null,hid:false,views:0,sold:0}:products[i];
   let sizes=[36,37,38,39],photo=p.img?"img/"+p.img+".jpg":null,sg=suggest(null),mode="libre",reg="Europa";
   const draw=()=>{
-  openSheet(`<div class="script" style="font-size:1.6rem">${isNew?"Nuevo destino":"Editar destino"}</div><h2>${isNew?"Crear producto":p.n+" "+p.f}</h2>
+  openSheet(`<div class="script" style="font-size:1.6rem">${isNew?"Nuevo par":"Editar par"}</div><h2>${isNew?"Crear producto":p.n+" "+p.f}</h2>
    <div class="sec lbl">Foto</div><label class="drop" for="pf">${photo?`<img src="${photo}" alt="">`:"📷 Toca para subir la foto del par"}<input id="pf" type="file" accept="image/*" hidden></label>
    ${isNew?`<div class="sec lbl">Nombre (capital del mundo)</div><div class="sugg"><div class="seg" style="margin-bottom:.6rem"><button data-m="libre" class="${mode==="libre"?"on":""}">Siguiente libre</button><button data-m="reg" class="${mode==="reg"?"on":""}">Por región</button></div>
    ${mode==="reg"?`<div class="chips" style="margin-bottom:.4rem">${Object.keys(CAP).map(r=>`<button data-r="${r}" class="${reg===r?"on":""}">${r}</button>`).join("")}</div>`:""}
    <div class="lbl">Te sugiero</div><div class="nm" id="sn">${sg.n} ${sg.f}</div><div class="rs" style="margin-bottom:.6rem">${sg.note}</div><div class="row2"><button class="btn red sm" id="use">Usar este nombre</button><button class="btn line sm" id="again">🎲 Otra</button></div></div>`:""}
    <div class="fld"><label class="lbl">Nombre</label><input id="en" value="${p.n?p.n+" "+p.f:""}" placeholder="Ej. Roma 🇮🇹"></div>
+   <div class="fld"><label class="lbl">Categoría</label><select id="ec">${cats.map(c=>`<option value="${c.id}" ${c.id===(p.cat||(selCat!=="all"?selCat:cats[0].id))?"selected":""}>${c.n}</option>`).join("")}</select></div>
    <div class="fld"><label class="lbl">Tipo</label><select id="et">${["Bailarinas","Dorsay","Slingback","Cuña","Mocasines","Sandalias","Plataformas"].map(t=>`<option ${t===p.t?"selected":""}>${t}</option>`).join("")}</select></div>
    <div class="fld"><label class="lbl">Precio (COP)</label><input id="ep" type="number" value="${p.p}"></div>
    <div class="fld"><label class="lbl">Tallas disponibles</label><div class="szs" id="szs">${[35,36,37,38,39,40,41].map(s=>`<button type="button" data-z="${s}" class="${sizes.includes(s)?"on":""}">${s}</button>`).join("")}</div></div>
@@ -944,7 +1053,7 @@ function editProd(i){
   $("#sv").onclick=()=>{const nm=$("#en").value.trim();if(!nm){toast("Escribe el nombre del par");return}
     if(!sizes.length){toast("Elige al menos una talla");return}
     const parts=nm.split(" "),fl=/\p{Regional_Indicator}/u.test(parts[parts.length-1])?parts.pop():(p.f||"🌍"),n=parts.join(" ");
-    const obj={...p,n,f:fl,t:$("#et").value,p:+$("#ep").value||p.p};
+    const obj={...p,n,f:fl,t:$("#et").value,cat:$("#ec").value,p:+$("#ep").value||p.p};
     if(isNew){obj.id=n.toLowerCase().replace(/\s+/g,"-");obj.img=photo&&photo.startsWith("img/")?photo.slice(4,-4):"m01";products.unshift(obj);toast("🎉 "+n+" "+fl+" creado")}else{products[i]=obj;toast("✓ Cambios guardados")}
     closeSheet();rProductos()};
   };draw();
