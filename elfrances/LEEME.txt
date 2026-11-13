@@ -1,0 +1,4 @@
+PERFUMERIA EL FRANCES - PROTOTIPO (datos de prueba en el navegador)
+Carpeta "elfrances" en prototipos-onytek (Vercel). Bienvenida: index.html. Tienda y panel: prototipo/ (tienda: prototipo/#tienda, panel: prototipo/#panel; usuario diego, clave elfrances).
+Pedidos y pagos solo por WhatsApp (573185409795). Todo sobre pedido, domicilio gratis en Cali.
+Pendiente del cliente: precios y fotos finales, frascos especiales, revisar textos.
